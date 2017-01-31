@@ -35,19 +35,29 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.1'
 
     // GOOGLE LIBRARIES
+    compile 'com.google.code.gson:gson:2.7'
+
+    // DEPENDENCY INJECTION LIBRARIES
     apt 'com.google.dagger:dagger-compiler:2.8'
     compile 'com.google.dagger:dagger:2.8'
     provided 'javax.annotation:jsr250-api:1.0'
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    // IMAGE LIBRARIES
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.makeramen:roundedimageview:2.3.0'
 
     // RX LIBRARIES
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-design:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
 
     // THIRD-PARTY LIBRARIES
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.github.clans:fab:1.6.4'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
