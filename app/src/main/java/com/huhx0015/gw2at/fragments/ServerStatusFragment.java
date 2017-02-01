@@ -22,6 +22,7 @@ import com.huhx0015.gw2at.ui.adapters.ServerStatusAdapter;
 import com.huhx0015.gw2at.utils.DialogUtils;
 import com.huhx0015.gw2at.utils.SnackbarUtils;
 import com.huhx0015.gw2at.viewmodels.fragments.ServerStatusFragmentViewModel;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import io.reactivex.Observable;
@@ -45,8 +46,14 @@ public class ServerStatusFragment extends Fragment {
     // CONTEXT VARIABLES
     private Context mContext;
 
+    // DATA VARIABLES
+    private List<WorldsResponse> mWorldList;
+
     // LOGGING VARIABLES
     private static final String LOG_TAG = ServerStatusFragment.class.getSimpleName();
+
+    // PARCELABLE VARIABLES
+    private static final String SERVER_STATUS_FRAGMENT_WORLD_LIST = LOG_TAG + "_WORLD_LIST";
 
     // DEPENDENCY INJECTION VARIABLES
     @Inject Retrofit mNetworkAdapter;
@@ -73,8 +80,23 @@ public class ServerStatusFragment extends Fragment {
         ServerStatusFragmentViewModel viewModel = new ServerStatusFragmentViewModel();
         mBinding.setViewModel(viewModel);
         initLayout();
-        queryWorldStatus();
+
+        if (savedInstanceState != null) {
+            mWorldList = savedInstanceState.getParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST);
+            setRecyclerView();
+        } else {
+            queryWorldStatus();
+        }
+
         return mBinding.getRoot();
+    }
+
+    /** FRAGMENT EXTENSION METHODS _____________________________________________________________ **/
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST, new ArrayList<>(mWorldList));
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -93,8 +115,8 @@ public class ServerStatusFragment extends Fragment {
         mBinding.serverStatusText.setShadowLayer(4, 2, 2, Color.BLACK);
     }
 
-    private void setRecyclerView(List<WorldsResponse> worldList) {
-        ServerStatusAdapter adapter = new ServerStatusAdapter(worldList, mContext);
+    private void setRecyclerView() {
+        ServerStatusAdapter adapter = new ServerStatusAdapter(mWorldList, mContext);
         mBinding.serverStatusRecyclerview.setAdapter(adapter);
     }
 
@@ -115,8 +137,9 @@ public class ServerStatusFragment extends Fragment {
 
                     @Override
                     public void onNext(List<WorldsResponse> worldsResponses) {
+                        mWorldList = worldsResponses;
                         if (worldsResponses != null) {
-                            setRecyclerView(worldsResponses);
+                            setRecyclerView();
                         }
                     }
 
@@ -124,7 +147,8 @@ public class ServerStatusFragment extends Fragment {
                     public void onError(Throwable t) {
                         progressDialog.dismiss();
                         SnackbarUtils.displaySnackbarWithAction(mBinding.getRoot(), t.getLocalizedMessage(),
-                                Snackbar.LENGTH_INDEFINITE, getString(R.string.retry), new View.OnClickListener() {
+                                Snackbar.LENGTH_INDEFINITE, Color.RED, getString(R.string.retry),
+                                new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         queryWorldStatus();

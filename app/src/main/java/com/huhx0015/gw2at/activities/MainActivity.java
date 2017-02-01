@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         initBinding();
         initToolbar();
 
-        loadFragment(new ServerStatusFragment()); // TODO: Testing.
+        loadFragment(ServerStatusFragment.newInstance()); // TODO: Testing.
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
