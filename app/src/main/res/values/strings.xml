@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
 
     <!--SERVER STATUS STRINGS-->
+    <string name="retry">Retry</string>
     <string name="server_status">SERVER STATUS</string>
+    <string name="world">WORLD</string>
 
 </resources>

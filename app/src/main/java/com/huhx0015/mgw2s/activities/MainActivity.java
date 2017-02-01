@@ -2,11 +2,15 @@ package com.huhx0015.mgw2s.activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.huhx0015.mgw2s.R;
 import com.huhx0015.mgw2s.databinding.ActivityMainBinding;
+import com.huhx0015.mgw2s.fragments.ServerStatusFragment;
 import com.huhx0015.mgw2s.viewmodels.activities.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener {
@@ -14,8 +18,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // BINDING / VIEWMODEL VARIABLES
-    private ActivityMainBinding mainActivityBinding;
-    private MainActivityViewModel mainActivityViewModel;
+    private ActivityMainBinding mBinding;
+    private MainActivityViewModel mViewModel;
 
     // LOGGING VARIABLES
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
 
         initBinding();
         initToolbar();
+        
+        loadFragment(new ServerStatusFragment()); // TODO: Testing.
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
@@ -57,13 +63,23 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     /** LAYOUT METHODS _________________________________________________________________________ **/
 
     private void initBinding() {
-        mainActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mainActivityViewModel = new MainActivityViewModel();
-        mainActivityViewModel.setViewModelListener(this);
-        mainActivityBinding.setViewModel(mainActivityViewModel);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mViewModel = new MainActivityViewModel();
+        mViewModel.setViewModelListener(this);
+        mBinding.setViewModel(mViewModel);
     }
 
     private void initToolbar() {
-        setSupportActionBar(mainActivityBinding.mainToolbar);
+        setSupportActionBar(mBinding.mainToolbar);
+    }
+
+    /** FRAGMENT METHODS _______________________________________________________________________ **/
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.content_main, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

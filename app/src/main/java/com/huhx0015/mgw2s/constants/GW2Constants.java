@@ -17,6 +17,7 @@ public class GW2Constants {
     public static final String POPULATION_HIGH = "High";
     public static final String POPULATION_VERYHIGH = "VeryHigh";
     public static final String POPULATION_FULL = "Full";
+    public static final String POPULATION_OFFLINE = "Offline";
 
     // URL CONSTANTS:
     public static final String API_URL = "https://api.guildwars2.com/" + CURRENT_API_VERSION;

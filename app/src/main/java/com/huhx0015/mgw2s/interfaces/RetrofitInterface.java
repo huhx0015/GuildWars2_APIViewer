@@ -36,7 +36,7 @@ import com.huhx0015.mgw2s.models.responses.commerce.CommercePricesResponse;
 import com.huhx0015.mgw2s.models.responses.commerce.CommerceTransactionsResponse;
 import com.huhx0015.mgw2s.models.responses.items.ItemResponse;
 import java.util.List;
-import io.reactivex.Observable;
+import rx.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
@@ -425,8 +425,8 @@ public interface RetrofitInterface {
     Observable<List<Integer>> getWorldList();
 
     @GET("worlds")
-    Observable<WorldsResponse> getWorlds(@Nullable @Query("ids") String ids);
+    Observable<List<WorldsResponse>> getWorlds(@Nullable @Query("ids") String ids);
 
     @GET("worlds")
-    Observable<WorldsResponse> getLocalizedWorlds(@Nullable @Query("lang") String lang);
+    Observable<List<WorldsResponse>> getLocalizedWorlds(@Nullable @Query("lang") String lang);
 }

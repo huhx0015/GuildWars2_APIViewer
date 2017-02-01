@@ -1,8 +1,75 @@
 package com.huhx0015.mgw2s.ui.adapters;
 
+import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.huhx0015.mgw2s.R;
+import com.huhx0015.mgw2s.databinding.AdapterServerStatusBinding;
+import com.huhx0015.mgw2s.models.responses.WorldsResponse;
+import com.huhx0015.mgw2s.viewmodels.adapters.ServerStatusAdapterViewModel;
+import java.util.List;
+
 /**
  * Created by Michael Yoon Huh on 2/1/2017.
  */
 
-public class ServerStatusAdapter {
+public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapter.ServerStatusViewHolder> {
+
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // ADAPTER VARIABLES
+    private Context mContext;
+
+    // LIST VARIABLES
+    private List<WorldsResponse> mWorldList;
+
+    // LOGGING VARIABLES
+    private static final String LOG_TAG = ServerStatusAdapter.class.getSimpleName();
+
+    /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
+
+    public ServerStatusAdapter(List<WorldsResponse> list, Context mContext) {
+        this.mWorldList = list;
+        this.mContext = mContext;
+    }
+
+    /** RECYCLER VIEW METHODS __________________________________________________________________ **/
+
+    @Override
+    public ServerStatusViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        AdapterServerStatusBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.adapter_server_status, parent, false);
+        return new ServerStatusViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(ServerStatusViewHolder holder, int position) {
+        int worldId = mWorldList.get(position).getId();
+        String worldName = mWorldList.get(position).getName();
+        String worldPopulation = mWorldList.get(position).getPopulation();
+        holder.bindView(worldName, worldPopulation);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mWorldList.size();
+    }
+
+    /** SUBCLASSES _____________________________________________________________________________ **/
+
+    static class ServerStatusViewHolder extends RecyclerView.ViewHolder {
+
+        private AdapterServerStatusBinding mBinding;
+
+        ServerStatusViewHolder(AdapterServerStatusBinding binding) {
+            super(binding.getRoot());
+            this.mBinding = binding;
+        }
+
+        private void bindView(String worldName, String serverStatus) {
+            ServerStatusAdapterViewModel viewModel = new ServerStatusAdapterViewModel(worldName, serverStatus);
+            mBinding.setViewModel(viewModel);
+        }
+    }
 }
