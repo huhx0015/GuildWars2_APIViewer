@@ -7,14 +7,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.huhx0015.mgw2s.viewmodels.activities.MainActivityViewModel" />
+            type="com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:mContext="com.huhx0015.mgw2s.activities.MainActivity">
+        tools:mContext="com.huhx0015.gw2at.activities.MainActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"

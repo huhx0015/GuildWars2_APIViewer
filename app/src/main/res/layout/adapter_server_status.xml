@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.huhx0015.mgw2s.viewmodels.adapters.ServerStatusAdapterViewModel" />
+            type="com.huhx0015.gw2at.viewmodels.adapters.ServerStatusAdapterViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <com.huhx0015.mgw2s.ui.views.ServerStatusView
+            <com.huhx0015.gw2at.ui.views.ServerStatusView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

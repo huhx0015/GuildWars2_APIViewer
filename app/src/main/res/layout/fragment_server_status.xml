@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.huhx0015.mgw2s.viewmodels.fragments.ServerStatusFragmentViewModel" />
+            type="com.huhx0015.gw2at.viewmodels.fragments.ServerStatusFragmentViewModel" />
     </data>
 
     <LinearLayout

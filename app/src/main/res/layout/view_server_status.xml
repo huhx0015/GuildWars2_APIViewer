@@ -6,7 +6,7 @@
         <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="viewModel"
-            type="com.huhx0015.mgw2s.viewmodels.views.ServerStatusViewModel" />
+            type="com.huhx0015.gw2at.viewmodels.views.ServerStatusViewModel" />
     </data>
 
     <RelativeLayout

@@ -1,4 +1,4 @@
-package com.huhx0015.mgw2s;
+package com.huhx0015.gw2at;
 
 import org.junit.Test;
 
