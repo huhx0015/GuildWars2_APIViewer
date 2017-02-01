@@ -21,13 +21,15 @@ import com.huhx0015.mgw2s.ui.adapters.ServerStatusAdapter;
 import com.huhx0015.mgw2s.utils.DialogUtils;
 import com.huhx0015.mgw2s.utils.SnackbarUtils;
 import com.huhx0015.mgw2s.viewmodels.fragments.ServerStatusFragmentViewModel;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import java.util.List;
 import javax.inject.Inject;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Michael Yoon Huh on 2/1/2017.
@@ -102,15 +104,15 @@ public class ServerStatusFragment extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<WorldsResponse>>() {
                     @Override
+                    public void onSubscribe(Subscription s) {
+
+                    }
+
+                    @Override
                     public void onNext(List<WorldsResponse> worldsResponses) {
                         if (worldsResponses != null) {
                             setRecyclerView(worldsResponses);
                         }
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                        progressDialog.dismiss();
                     }
 
                     @Override
@@ -124,6 +126,11 @@ public class ServerStatusFragment extends Fragment {
                                     }
                                 });
                         Log.e(LOG_TAG, "queryWorldStatus(): ERROR: " + t.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        progressDialog.dismiss();
                     }
                 });
     }

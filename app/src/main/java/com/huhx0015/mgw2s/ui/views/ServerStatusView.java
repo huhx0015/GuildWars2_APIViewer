@@ -3,6 +3,8 @@ package com.huhx0015.mgw2s.ui.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.databinding.BindingMethod;
+import android.databinding.BindingMethods;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -17,6 +19,10 @@ import com.huhx0015.mgw2s.viewmodels.views.ServerStatusViewModel;
  * Created by Michael Yoon Huh on 2/1/2017.
  */
 
+@BindingMethods({
+        @BindingMethod(type = ServerStatusView.class, attribute = "app:worldNameText", method = "setWorldName"),
+        @BindingMethod(type = ServerStatusView.class, attribute = "app:serverStatusText", method = "setServerStatus")
+})
 public class ServerStatusView extends RelativeLayout {
 
     private String mServerStatus;
@@ -69,5 +75,13 @@ public class ServerStatusView extends RelativeLayout {
     private void initText() {
         mBinding.worldText.setShadowLayer(4, 2, 2, Color.BLACK);
         mBinding.worldNameText.setShadowLayer(4, 2, 2, Color.BLACK);
+    }
+
+    public void setWorldName(String worldName) {
+        mWorldName = worldName;
+    }
+
+    public void setServerStatus(String serverStatus) {
+        mServerStatus = serverStatus;
     }
 }
