@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.huhx0015.mgw2s.viewmodels.MainActivityViewModel" />
+            type="com.huhx0015.mgw2s.viewmodels.activities.MainActivityViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout

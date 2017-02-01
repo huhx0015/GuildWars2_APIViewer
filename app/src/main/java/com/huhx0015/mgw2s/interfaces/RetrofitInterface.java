@@ -35,7 +35,6 @@ import com.huhx0015.mgw2s.models.responses.commerce.CommerceListingsResponse;
 import com.huhx0015.mgw2s.models.responses.commerce.CommercePricesResponse;
 import com.huhx0015.mgw2s.models.responses.commerce.CommerceTransactionsResponse;
 import com.huhx0015.mgw2s.models.responses.items.ItemResponse;
-
 import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.GET;

@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Michael Yoon Huh on 1/31/2017.
  *
- *  Source: https://github.com/codepath/android_guides/wiki/Dependency-Injection-with-Dagger-2
+ * Source: https://github.com/codepath/android_guides/wiki/Dependency-Injection-with-Dagger-2
  */
 
 @Module

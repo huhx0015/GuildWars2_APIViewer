@@ -1,4 +1,10 @@
 <resources>
+
+    <!--APPLICATION STRINGS-->
     <string name="app_name">Guild Wars 2 API Tester</string>
     <string name="action_settings">Settings</string>
+
+    <!--SERVER STATUS STRINGS-->
+    <string name="server_status">SERVER STATUS</string>
+
 </resources>

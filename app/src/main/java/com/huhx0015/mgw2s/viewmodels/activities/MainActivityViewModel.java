@@ -1,13 +1,13 @@
-package com.huhx0015.mgw2s.viewmodels;
+package com.huhx0015.mgw2s.viewmodels.activities;
 
+import android.databinding.BaseObservable;
 import android.view.View;
-import java.util.Observable;
 
 /**
  * Created by Michael Yoon Huh on 1/31/2017.
  */
 
-public class MainActivityViewModel extends Observable {
+public class MainActivityViewModel extends BaseObservable {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 

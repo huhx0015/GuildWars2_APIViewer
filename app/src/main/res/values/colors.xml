@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--APPLICATION COLORS-->
     <color name="colorPrimary">#e10a05</color>
     <color name="colorPrimaryDark">#420408</color>
     <color name="colorAccent">#f58d26</color>
+
+    <!--SERVER POPULATION COLORS-->
+    <color name="population_low">#40ff00</color>
+    <color name="population_medium">#bfff00</color>
+    <color name="population_high">#ffff00</color>
+    <color name="population_veryhigh">#ff8000</color>
+    <color name="population_full">#ff0000</color>
+
 </resources>

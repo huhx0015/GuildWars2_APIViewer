@@ -1,6 +1,7 @@
 package com.huhx0015.mgw2s.interfaces;
 
 import com.huhx0015.mgw2s.activities.MainActivity;
+import com.huhx0015.mgw2s.fragments.ServerStatusFragment;
 import com.huhx0015.mgw2s.modules.ApplicationModule;
 import com.huhx0015.mgw2s.modules.NetworkModule;
 import javax.inject.Singleton;
@@ -14,4 +15,5 @@ import dagger.Component;
 @Component(modules={ApplicationModule.class, NetworkModule.class})
 public interface NetworkComponent {
     void inject(MainActivity activity);
+    void inject(ServerStatusFragment fragment);
 }

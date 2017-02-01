@@ -2,13 +2,12 @@ package com.huhx0015.mgw2s.activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.huhx0015.mgw2s.R;
 import com.huhx0015.mgw2s.databinding.ActivityMainBinding;
-import com.huhx0015.mgw2s.viewmodels.MainActivityViewModel;
+import com.huhx0015.mgw2s.viewmodels.activities.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener {
 
@@ -66,9 +65,5 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
 
     private void initToolbar() {
         setSupportActionBar(mainActivityBinding.mainToolbar);
-    }
-
-    private void displaySnackbar(String message) {
-        Snackbar.make(mainActivityBinding.getRoot(), message, Snackbar.LENGTH_LONG).show();
     }
 }
