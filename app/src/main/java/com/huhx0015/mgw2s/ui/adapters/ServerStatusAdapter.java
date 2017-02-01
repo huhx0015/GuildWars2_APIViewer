@@ -45,10 +45,10 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
 
     @Override
     public void onBindViewHolder(ServerStatusViewHolder holder, int position) {
-        int worldId = mWorldList.get(position).getId();
+        String worldId = Integer.toString(mWorldList.get(position).getId());
         String worldName = mWorldList.get(position).getName();
         String worldPopulation = mWorldList.get(position).getPopulation();
-        holder.bindView(worldName, worldPopulation);
+        holder.bindView(worldName, worldId, worldPopulation);
     }
 
     @Override
@@ -67,8 +67,8 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
             this.mBinding = binding;
         }
 
-        private void bindView(String worldName, String serverStatus) {
-            ServerStatusAdapterViewModel viewModel = new ServerStatusAdapterViewModel(worldName, serverStatus);
+        private void bindView(String worldName, String id, String serverStatus) {
+            ServerStatusAdapterViewModel viewModel = new ServerStatusAdapterViewModel(worldName, id, serverStatus);
             mBinding.setViewModel(viewModel);
         }
     }

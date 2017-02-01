@@ -51,14 +51,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.makeramen:roundedimageview:2.3.0'
 
-    // RX LIBRARIES
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
-    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-design:1.0.0'
-    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
-
     // NETWORKING LIBRARIES
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -67,7 +59,20 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.5.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
 
-    // THIRD-PARTY LIBRARIES
+    // PERFORMANCE LIBRARIES
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    // RX LIBRARIES
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-design:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
+
+    // VIEW LIBRARIES
     compile 'com.github.clans:fab:1.6.4'
 
     // TEST LIBRARIES

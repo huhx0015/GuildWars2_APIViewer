@@ -1,6 +1,11 @@
 package com.huhx0015.mgw2s.viewmodels.views;
 
+import android.content.Context;
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import com.huhx0015.mgw2s.BR;
 
 /**
  * Created by Michael Yoon Huh on 2/1/2017.
@@ -8,26 +13,32 @@ import android.databinding.BaseObservable;
 
 public class ServerStatusViewModel extends BaseObservable {
 
-    private int mServerStatusDrawable;
+    @Bindable
+    public Drawable serverStatusDrawable;
+    @Bindable
+    public String serverStatusText;
+    @Bindable
+    public String worldIdText;
+    @Bindable
+    public String worldNameText;
 
-    private String mServerStatusText;
-    private String mWorldNameText;
-
-    public ServerStatusViewModel(String worldName, String serverStatus, int drawable) {
-        this.mWorldNameText = worldName;
-        this.mServerStatusText = serverStatus;
-        this.mServerStatusDrawable = drawable;
+    public void setServerStatusDrawable(int drawable, Context context) {
+        this.serverStatusDrawable = ContextCompat.getDrawable(context, drawable);
+        notifyPropertyChanged(BR.serverStatusDrawable);
     }
 
-    public int getServerStatusDrawable() {
-        return mServerStatusDrawable;
+    public void setServerStatusText(String serverStatus) {
+        this.serverStatusText = serverStatus;
+        notifyPropertyChanged(BR.serverStatusText);
     }
 
-    public String getServerStatusText() {
-        return mServerStatusText;
+    public void setWorldIdText(String worldId) {
+        this.worldIdText = worldId;
+        notifyPropertyChanged(BR.worldIdText);
     }
 
-    public String getWorldNameText() {
-        return mWorldNameText;
+    public void setWorldNameText(String worldName) {
+        this.worldNameText = worldName;
+        notifyPropertyChanged(BR.worldNameText);
     }
 }

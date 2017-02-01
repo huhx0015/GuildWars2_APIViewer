@@ -3,6 +3,7 @@ package com.huhx0015.mgw2s.fragments;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -21,13 +22,12 @@ import com.huhx0015.mgw2s.ui.adapters.ServerStatusAdapter;
 import com.huhx0015.mgw2s.utils.DialogUtils;
 import com.huhx0015.mgw2s.utils.SnackbarUtils;
 import com.huhx0015.mgw2s.viewmodels.fragments.ServerStatusFragmentViewModel;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 import java.util.List;
 import javax.inject.Inject;
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
@@ -81,11 +81,16 @@ public class ServerStatusFragment extends Fragment {
 
     private void initLayout() {
         initRecyclerView();
+        initText();
     }
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         mBinding.serverStatusRecyclerview.setLayoutManager(layoutManager);
+    }
+
+    private void initText() {
+        mBinding.serverStatusText.setShadowLayer(4, 2, 2, Color.BLACK);
     }
 
     private void setRecyclerView(List<WorldsResponse> worldList) {
@@ -99,12 +104,12 @@ public class ServerStatusFragment extends Fragment {
         final ProgressDialog progressDialog = DialogUtils.createProgressDialog(mContext);
 
         RetrofitInterface worldRequest = mNetworkAdapter.create(RetrofitInterface.class);
-        Observable<List<WorldsResponse>> call = worldRequest.getWorlds(null);
+        Observable<List<WorldsResponse>> call = worldRequest.getWorlds("all");
         call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<WorldsResponse>>() {
+                .subscribe(new Observer<List<WorldsResponse>>() {
                     @Override
-                    public void onSubscribe(Subscription s) {
+                    public void onSubscribe(Disposable d) {
 
                     }
 
@@ -118,14 +123,14 @@ public class ServerStatusFragment extends Fragment {
                     @Override
                     public void onError(Throwable t) {
                         progressDialog.dismiss();
-                        SnackbarUtils.displaySnackbarWithAction(mBinding.getRoot(), t.getMessage(),
+                        SnackbarUtils.displaySnackbarWithAction(mBinding.getRoot(), t.getLocalizedMessage(),
                                 Snackbar.LENGTH_INDEFINITE, getString(R.string.retry), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         queryWorldStatus();
                                     }
                                 });
-                        Log.e(LOG_TAG, "queryWorldStatus(): ERROR: " + t.getMessage());
+                        Log.e(LOG_TAG, "queryWorldStatus(): ERROR: " + t.getLocalizedMessage());
                     }
 
                     @Override

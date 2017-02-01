@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <declare-styleable name="ServerStatusView">
-        <attr name="worldNameText" format="string" />
         <attr name="serverStatusText" format="string" />
+        <attr name="worldIdText" format="string" />
+        <attr name="worldNameText" format="string" />
     </declare-styleable>
 </resources>

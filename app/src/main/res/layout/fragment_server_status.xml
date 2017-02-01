@@ -14,11 +14,13 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/server_status_text"
             android:text="@string/server_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:gravity="center"
+            android:layout_marginTop="8dp"
             android:padding="8dp"
             android:textStyle="normal|bold"
             android:textColor="@android:color/black" />

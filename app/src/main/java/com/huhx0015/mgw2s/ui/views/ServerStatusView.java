@@ -2,7 +2,6 @@ package com.huhx0015.mgw2s.ui.views;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.databinding.BindingMethod;
 import android.databinding.BindingMethods;
 import android.graphics.Color;
@@ -10,7 +9,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import com.huhx0015.mgw2s.R;
 import com.huhx0015.mgw2s.databinding.ViewServerStatusBinding;
 import com.huhx0015.mgw2s.utils.DrawableReferenceUtils;
 import com.huhx0015.mgw2s.viewmodels.views.ServerStatusViewModel;
@@ -20,68 +18,66 @@ import com.huhx0015.mgw2s.viewmodels.views.ServerStatusViewModel;
  */
 
 @BindingMethods({
-        @BindingMethod(type = ServerStatusView.class, attribute = "app:worldNameText", method = "setWorldName"),
-        @BindingMethod(type = ServerStatusView.class, attribute = "app:serverStatusText", method = "setServerStatus")
+        @BindingMethod(type = ServerStatusView.class, attribute = "app:serverStatusText", method = "setServerStatus"),
+        @BindingMethod(type = ServerStatusView.class, attribute = "app:worldIdText", method = "setWorldId"),
+        @BindingMethod(type = ServerStatusView.class, attribute = "app:worldNameText", method = "setWorldName")
 })
 public class ServerStatusView extends RelativeLayout {
 
-    private String mServerStatus;
-    private String mWorldName;
+    private Context mContext;
+    private ServerStatusViewModel mViewModel;
     private ViewServerStatusBinding mBinding;
 
     public ServerStatusView(Context context) {
         super(context);
-        initView(context);
+        mContext = context;
+        initView();
     }
 
     public ServerStatusView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initAttributes(context, attrs);
-        initView(context);
+        mContext = context;
+        initView();
     }
 
     public ServerStatusView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttributes(context, attrs);
-        initView(context);
+        mContext = context;
+        initView();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ServerStatusView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initAttributes(context, attrs);
-        initView(context);
+        mContext = context;
+        initView();
     }
 
-    private void initView(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    private void initView() {
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mBinding = ViewServerStatusBinding.inflate(inflater, this, true);
-        ServerStatusViewModel viewModel = new ServerStatusViewModel(mWorldName, mServerStatus,
-                DrawableReferenceUtils.getPopulationStatusDrawable(mServerStatus));
-        mBinding.setViewModel(viewModel);
+        mViewModel = new ServerStatusViewModel();
+        mBinding.setViewModel(mViewModel);
         initText();
-    }
-
-    private void initAttributes(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ServerStatusView, 0, 0);
-        try {
-            mWorldName = typedArray.getString(R.styleable.ServerStatusView_worldNameText);
-            mServerStatus = typedArray.getString(R.styleable.ServerStatusView_serverStatusText);
-        } finally {
-            typedArray.recycle();
-        }
     }
 
     private void initText() {
         mBinding.worldText.setShadowLayer(4, 2, 2, Color.BLACK);
+        mBinding.worldIdText.setShadowLayer(4, 2, 2, Color.BLACK);
         mBinding.worldNameText.setShadowLayer(4, 2, 2, Color.BLACK);
+        mBinding.serverStatusText.setShadowLayer(2, 2, 2, Color.BLACK);
     }
 
     public void setWorldName(String worldName) {
-        mWorldName = worldName;
+        mViewModel.setWorldNameText(worldName);
+    }
+
+    public void setWorldId(String worldId) {
+        mViewModel.setWorldIdText(worldId);
     }
 
     public void setServerStatus(String serverStatus) {
-        mServerStatus = serverStatus;
+        mViewModel.setServerStatusText(serverStatus);
+        mViewModel.setServerStatusDrawable(DrawableReferenceUtils.getPopulationStatusDrawable(serverStatus), mContext);
     }
 }

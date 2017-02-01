@@ -8,16 +8,22 @@ import android.databinding.BaseObservable;
 
 public class ServerStatusAdapterViewModel extends BaseObservable {
 
+    private String mWorldIdText;
     private String mServerStatusText;
     private String mWorldNameText;
 
-    public ServerStatusAdapterViewModel(String worldName, String serverStatus) {
+    public ServerStatusAdapterViewModel(String worldName, String id, String serverStatus) {
         this.mWorldNameText = worldName;
+        this.mWorldIdText = id;
         this.mServerStatusText = serverStatus;
     }
 
     public String getServerStatusText() {
         return mServerStatusText;
+    }
+
+    public String getWorldIdText() {
+        return mWorldIdText;
     }
 
     public String getWorldNameText() {
@@ -26,6 +32,10 @@ public class ServerStatusAdapterViewModel extends BaseObservable {
 
     public void setServerStatusText(String serverStatus) {
         this.mServerStatusText = serverStatus;
+    }
+
+    public void setWorldIdText(String mWorldIdText) {
+        this.mWorldIdText = mWorldIdText;
     }
 
     public void setWorldNameText(String worldName) {

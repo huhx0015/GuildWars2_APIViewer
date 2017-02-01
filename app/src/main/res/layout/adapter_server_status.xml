@@ -27,8 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                app:worldNameText="@{viewModel.worldNameText}"
-                app:serverStatusText="@{viewModel.serverStatusText}"/>
+                app:serverStatusText="@{viewModel.serverStatusText}"
+                app:worldIdText="@{viewModel.worldIdText}"
+                app:worldNameText="@{viewModel.worldNameText}" />
 
         </RelativeLayout>
 
