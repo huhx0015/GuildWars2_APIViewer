@@ -131,9 +131,7 @@ public class ServerStatusFragment extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<WorldsResponse>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
+                    public void onSubscribe(Disposable d) {}
 
                     @Override
                     public void onNext(List<WorldsResponse> worldsResponses) {
