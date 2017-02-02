@@ -9,13 +9,14 @@
     </data>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/quaggans_image_container"
             android:layout_width="@dimen/quaggans_image_width"
-            android:layout_height="@dimen/quaggans_image_height">
+            android:layout_height="@dimen/quaggans_image_height"
+            android:layout_centerHorizontal="true">
 
             <ProgressBar
                 style="?android:attr/progressBarStyle"
@@ -29,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:scaleType="centerInside"
-                android:src="@{viewModel.quaggansImage}"/>
+                android:src="@{viewModel.quaggansImage}" />
 
         </RelativeLayout>
 

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import com.huhx0015.gw2at.BR;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.utils.BindableFieldTarget;
+import com.huhx0015.gw2at.utils.DisplayUtils;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -38,19 +39,21 @@ public class QuaggansViewModel extends BaseObservable implements BindableFieldTa
         notifyPropertyChanged(BR.quaggansProgressBarVisiblility);
     }
 
+    public void setQuaggansNameText(String name) {
+        this.quaggansNameText = name;
+        notifyPropertyChanged(BR.quaggansNameText);
+    }
+
     public void setQuaggansImage(String imageUrl, Context context) {
         quaggansImage = new ObservableField<>();
         mTarget = new BindableFieldTarget(quaggansImage, context.getResources());
         mTarget.setListener(this);
         Picasso.with(context)
                 .load(imageUrl)
+                .resize((int) DisplayUtils.convertDpToPixel(120, context),
+                        (int) DisplayUtils.convertDpToPixel(128, context))
                 .error(R.drawable.icon_unavailable)
                 .into(mTarget);
-    }
-
-    public void setQuaggansNameText(String name) {
-        this.quaggansNameText = name;
-        notifyPropertyChanged(BR.quaggansNameText);
     }
 
     /** INTERFACE METHODS ______________________________________________________________________ **/
@@ -58,7 +61,7 @@ public class QuaggansViewModel extends BaseObservable implements BindableFieldTa
     @Override
     public void onBitmapLoaded() {
         setQuaggansProgressBarVisible(false);
-        //notifyChange(); // TODO: Images load, but causes massive performance issue.
+        notifyChange();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.huhx0015.gw2at.fragments;
 
 import android.app.ProgressDialog;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.huhx0015.gw2at.interfaces.RetrofitInterface;
 import com.huhx0015.gw2at.models.responses.QuaggansResponse;
 import com.huhx0015.gw2at.ui.adapters.QuaggansAdapter;
 import com.huhx0015.gw2at.utils.DialogUtils;
+import com.huhx0015.gw2at.utils.DisplayUtils;
 import com.huhx0015.gw2at.utils.SnackbarUtils;
 import com.huhx0015.gw2at.viewmodels.fragments.ApiFragmentViewModel;
 import java.util.ArrayList;
@@ -45,7 +47,8 @@ public class QuaggansFragment extends ApiFragment {
     private static final String LOG_TAG = ServerStatusFragment.class.getSimpleName();
 
     // RECYCLERVIEW VARIABLES
-    private static final int QUAGGANS_GRID_COLUMNS = 2;
+    private static final int QUAGGANS_GRID_PORTRAIT_COLUMNS = 2;
+    private static final int QUAGGANS_GRID_LANDSCAPE_COLUMNS = 3;
 
     // PARCELABLE VARIABLES
     private static final String QUAGGANS_FRAGMENT_QUAGGANS_LIST = LOG_TAG + "_QUAGGANS_LIST";
@@ -92,8 +95,16 @@ public class QuaggansFragment extends ApiFragment {
     }
 
     private void initRecyclerView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(mContext, QUAGGANS_GRID_COLUMNS);
+        GridLayoutManager layoutManager;
+        if (DisplayUtils.getOrientation(mContext) == Configuration.ORIENTATION_PORTRAIT) {
+            layoutManager = new GridLayoutManager(mContext, QUAGGANS_GRID_PORTRAIT_COLUMNS);
+        } else {
+            layoutManager = new GridLayoutManager(mContext, QUAGGANS_GRID_LANDSCAPE_COLUMNS);
+        }
+
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
+        mBinding.apiRecyclerview.setDrawingCacheEnabled(true);
+        mBinding.apiRecyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }
 
     private void initText() {
