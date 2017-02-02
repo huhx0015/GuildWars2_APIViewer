@@ -12,5 +12,9 @@
     <string name="server_status">SERVER STATUS</string>
     <string name="world">WORLD</string>
     <string name="world_id">ID:\u0020</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

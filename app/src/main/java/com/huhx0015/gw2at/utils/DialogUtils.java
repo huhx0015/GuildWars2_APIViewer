@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.view.WindowManager;
-
 import com.huhx0015.gw2at.R;
 
 /**
@@ -27,7 +26,7 @@ public class DialogUtils {
                 .create()
                 .show();
     }
-
+    
     public static ProgressDialog createProgressDialog(Context context) {
         ProgressDialog dialog = new ProgressDialog(context);
         try {

@@ -3,7 +3,7 @@
     package="com.huhx0015.gw2at"
     android:installLocation="auto">
 
-    <!--PERMISSIONS-->
+    <!-- PERMISSIONS -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,17 +13,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".activities.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

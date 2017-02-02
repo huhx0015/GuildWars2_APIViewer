@@ -22,6 +22,7 @@
             android:gravity="center"
             android:layout_marginTop="8dp"
             android:padding="8dp"
+            android:textAllCaps="true"
             android:textStyle="normal|bold"
             android:textColor="@android:color/black" />
 

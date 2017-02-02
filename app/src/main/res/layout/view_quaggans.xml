@@ -26,6 +26,7 @@
                 android:visibility="@{viewModel.quaggansProgressBarVisiblility ? View.VISIBLE : View.GONE}"/>
 
             <ImageView
+                android:id="@+id/quaggans_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"

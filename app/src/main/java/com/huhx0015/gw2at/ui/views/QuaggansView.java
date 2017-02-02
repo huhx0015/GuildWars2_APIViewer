@@ -68,6 +68,7 @@ public class QuaggansView extends RelativeLayout {
     }
 
     public void setQuaggansImage(String imageUrl) {
+        mBinding.quaggansImage.setImageDrawable(null);
         mViewModel.setQuaggansImage(imageUrl, mContext);
     }
 }

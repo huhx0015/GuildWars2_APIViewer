@@ -10,37 +10,54 @@
             type="com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/main_drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:mContext="com.huhx0015.gw2at.activities.MainActivity">
+        tools:openDrawer="start">
 
-        <android.support.design.widget.AppBarLayout
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="match_parent"
+            tools:mContext="com.huhx0015.gw2at.activities.MainActivity">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/main_toolbar"
+            <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
 
-        </android.support.design.widget.AppBarLayout>
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/main_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <include layout="@layout/content_main" />
+            </android.support.design.widget.AppBarLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/main_fab"
+            <include layout="@layout/content_main" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/main_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:onClick="@{viewModel.onClickFabButton}"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/main_nav_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:onClick="@{viewModel.onClickFabButton}"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main2_drawer" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </android.support.v4.widget.DrawerLayout>
 
 </layout>

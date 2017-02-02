@@ -2,9 +2,13 @@ package com.huhx0015.gw2at.activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +18,7 @@ import com.huhx0015.gw2at.fragments.QuaggansFragment;
 import com.huhx0015.gw2at.fragments.ServerStatusFragment;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
 
-public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener {
+public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener, NavigationView.OnNavigationItemSelectedListener{
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -33,12 +37,23 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
 
         initBinding();
         initToolbar();
+        initDrawer();
 
         //loadFragment(ServerStatusFragment.newInstance()); // TODO: Testing.
         loadFragment(QuaggansFragment.newInstance()); // TODO: Testing.
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,6 +64,31 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     @Override
     public void onFabButtonClicked() {
 
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     @Override
@@ -73,6 +113,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
 
     private void initToolbar() {
         setSupportActionBar(mBinding.mainToolbar);
+    }
+
+    private void initDrawer() {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mBinding.mainDrawer,
+                mBinding.mainToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mBinding.mainDrawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        mBinding.mainNavView.setNavigationItemSelectedListener(this);
     }
 
     /** FRAGMENT METHODS _______________________________________________________________________ **/

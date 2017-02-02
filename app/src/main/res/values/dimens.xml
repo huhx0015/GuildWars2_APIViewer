@@ -11,5 +11,8 @@
     <!--SERVER STATUS DIMENSIONS-->
     <dimen name="server_status_icon_width">96dp</dimen>
     <dimen name="server_status_icon_height">48dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
 
 </resources>
