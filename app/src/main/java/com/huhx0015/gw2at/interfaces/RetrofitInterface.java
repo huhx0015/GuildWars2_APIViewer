@@ -3,7 +3,7 @@ package com.huhx0015.gw2at.interfaces;
 import com.android.annotations.Nullable;
 import com.huhx0015.gw2at.models.responses.BuildResponse;
 import com.huhx0015.gw2at.models.responses.EmblemResponse;
-import com.huhx0015.gw2at.models.responses.QuaggansBoxResponse;
+import com.huhx0015.gw2at.models.responses.QuaggansResponse;
 import com.huhx0015.gw2at.models.responses.TokenInfoResponse;
 import com.huhx0015.gw2at.models.responses.WorldsResponse;
 import com.huhx0015.gw2at.models.responses.backstory.BackstoryQuestionResponse;
@@ -410,9 +410,11 @@ public interface RetrofitInterface {
     @GET("quaggans")
     Observable<List<String>> getQuaggans();
 
-    // QUAGGANS/BOX:
-    @GET("quaggans/box")
-    Observable<QuaggansBoxResponse> getQuaggansBox();
+    @GET("quaggans")
+    Observable<List<QuaggansResponse>> getQuaggans(@Query("ids") String ids);
+
+    @GET("quaggans/{id}")
+    Observable<QuaggansResponse> getQuagganId(@Path("id") String id);
 
     // TOKEN INFO:
     @GET("tokeninfo")

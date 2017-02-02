@@ -4,6 +4,9 @@
     <string name="app_name">Guild Wars 2 API Tester</string>
     <string name="action_settings">Settings</string>
 
+    <!--QUAGGANS-->
+    <string name="quaggans">Quaggans</string>
+
     <!--SERVER STATUS STRINGS-->
     <string name="retry">Retry</string>
     <string name="server_status">SERVER STATUS</string>

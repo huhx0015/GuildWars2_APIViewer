@@ -5,4 +5,9 @@
         <attr name="worldIdText" format="string" />
         <attr name="worldNameText" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="QuaggansView">
+        <attr name="quaggansImageUrl" format="string" />
+        <attr name="quaggansNameText" format="string" />
+    </declare-styleable>
 </resources>

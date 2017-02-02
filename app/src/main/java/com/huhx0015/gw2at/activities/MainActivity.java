@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.databinding.ActivityMainBinding;
+import com.huhx0015.gw2at.fragments.QuaggansFragment;
 import com.huhx0015.gw2at.fragments.ServerStatusFragment;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
 
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // BINDING / VIEWMODEL VARIABLES
+    // DATABINDING VARIABLES
     private ActivityMainBinding mBinding;
     private MainActivityViewModel mViewModel;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         initToolbar();
 
         loadFragment(ServerStatusFragment.newInstance()); // TODO: Testing.
+        //loadFragment(QuaggansFragment.newInstance()); // TODO: Testing.
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/

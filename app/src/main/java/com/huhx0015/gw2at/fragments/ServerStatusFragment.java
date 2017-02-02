@@ -1,50 +1,43 @@
 package com.huhx0015.gw2at.fragments;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.application.GW2Application;
-import com.huhx0015.gw2at.databinding.FragmentServerStatusBinding;
+import com.huhx0015.gw2at.databinding.FragmentApiBinding;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
 import com.huhx0015.gw2at.models.responses.WorldsResponse;
 import com.huhx0015.gw2at.ui.adapters.ServerStatusAdapter;
 import com.huhx0015.gw2at.utils.DialogUtils;
 import com.huhx0015.gw2at.utils.SnackbarUtils;
-import com.huhx0015.gw2at.viewmodels.fragments.ServerStatusFragmentViewModel;
+import com.huhx0015.gw2at.viewmodels.fragments.ApiFragmentViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
 
 /**
  * Created by Michael Yoon Huh on 2/1/2017.
  */
 
-public class ServerStatusFragment extends Fragment {
+public class ServerStatusFragment extends ApiFragment {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // BINDING VARIABLES
-    private FragmentServerStatusBinding mBinding;
-
-    // CONTEXT VARIABLES
-    private Context mContext;
+    // DATABINDING VARIABLES
+    private FragmentApiBinding mBinding;
 
     // DATA VARIABLES
     private List<WorldsResponse> mWorldList;
@@ -55,9 +48,6 @@ public class ServerStatusFragment extends Fragment {
     // PARCELABLE VARIABLES
     private static final String SERVER_STATUS_FRAGMENT_WORLD_LIST = LOG_TAG + "_WORLD_LIST";
 
-    // DEPENDENCY INJECTION VARIABLES
-    @Inject Retrofit mNetworkAdapter;
-
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
     public static ServerStatusFragment newInstance() {
@@ -66,18 +56,11 @@ public class ServerStatusFragment extends Fragment {
 
     /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mContext = getContext();
-        ((GW2Application) getActivity().getApplication()).getNetworkComponent().inject(this);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_server_status, null, false);
-        ServerStatusFragmentViewModel viewModel = new ServerStatusFragmentViewModel();
+        mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_api, null, false);
+        ApiFragmentViewModel viewModel = new ApiFragmentViewModel(getString(R.string.server_status));
         mBinding.setViewModel(viewModel);
         initLayout();
 
@@ -108,16 +91,16 @@ public class ServerStatusFragment extends Fragment {
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
-        mBinding.serverStatusRecyclerview.setLayoutManager(layoutManager);
+        mBinding.apiRecyclerview.setLayoutManager(layoutManager);
     }
 
     private void initText() {
-        mBinding.serverStatusText.setShadowLayer(4, 2, 2, Color.BLACK);
+        mBinding.apiNameText.setShadowLayer(4, 2, 2, Color.BLACK);
     }
 
     private void setRecyclerView() {
         ServerStatusAdapter adapter = new ServerStatusAdapter(mWorldList, mContext);
-        mBinding.serverStatusRecyclerview.setAdapter(adapter);
+        mBinding.apiRecyclerview.setAdapter(adapter);
     }
 
     /** NETWORK METHODS ________________________________________________________________________ **/
@@ -134,9 +117,9 @@ public class ServerStatusFragment extends Fragment {
                     public void onSubscribe(Disposable d) {}
 
                     @Override
-                    public void onNext(List<WorldsResponse> worldsResponses) {
-                        mWorldList = worldsResponses;
-                        if (worldsResponses != null) {
+                    public void onNext(List<WorldsResponse> response) {
+                        mWorldList = response;
+                        if (response != null) {
                             setRecyclerView();
                         }
                     }

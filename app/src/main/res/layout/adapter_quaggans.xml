@@ -6,11 +6,11 @@
     <data>
         <variable
             name="viewModel"
-            type="com.huhx0015.gw2at.viewmodels.adapters.ServerStatusAdapterViewModel" />
+            type="com.huhx0015.gw2at.viewmodels.adapters.QuaggansAdapterViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
         card_view:cardCornerRadius="2dp"
@@ -18,13 +18,12 @@
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true">
 
-        <com.huhx0015.gw2at.ui.views.ServerStatusView
-            android:layout_width="match_parent"
+        <com.huhx0015.gw2at.ui.views.QuaggansView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            app:serverStatusText="@{viewModel.serverStatusText}"
-            app:worldIdText="@{viewModel.worldIdText}"
-            app:worldNameText="@{viewModel.worldNameText}"
+            app:quaggansNameText="@{viewModel.quaggansNameText}"
+            app:quaggansImageUrl="@{viewModel.quaggansImageUrl}"
             android:padding="16dp"/>
 
     </android.support.v7.widget.CardView>

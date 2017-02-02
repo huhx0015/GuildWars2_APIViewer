@@ -4,6 +4,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <!--QUAGGANS DIMENSIONS-->
+    <dimen name="quaggans_image_width">120dp</dimen>
+    <dimen name="quaggans_image_height">128dp</dimen>
+
+    <!--SERVER STATUS DIMENSIONS-->
     <dimen name="server_status_icon_width">96dp</dimen>
     <dimen name="server_status_icon_height">48dp</dimen>
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.huhx0015.gw2at.viewmodels.fragments.ServerStatusFragmentViewModel" />
+            type="com.huhx0015.gw2at.viewmodels.fragments.ApiFragmentViewModel" />
     </data>
 
     <LinearLayout
@@ -14,8 +14,8 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/server_status_text"
-            android:text="@string/server_status"
+            android:id="@+id/api_name_text"
+            android:text="@{viewModel.apiNameText}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -26,10 +26,11 @@
             android:textColor="@android:color/black" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/server_status_recyclerview"
+            android:id="@+id/api_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 

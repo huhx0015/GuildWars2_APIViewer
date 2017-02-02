@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="android.graphics.drawable.Drawable"/>
         <variable
             name="viewModel"
             type="com.huhx0015.gw2at.viewmodels.views.ServerStatusViewModel" />
@@ -25,9 +24,7 @@
                 android:textColor="@android:color/black"
                 android:text="@string/world"
                 android:textSize="10sp"
-                android:layout_marginBottom="4dp"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="false" />
+                android:layout_marginBottom="4dp" />
 
             <TextView
                 android:id="@+id/world_name_text"
@@ -36,8 +33,7 @@
                 android:layout_below="@+id/world_text"
                 android:text="@{viewModel.worldNameText}"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:layout_centerVertical="false" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/world_id_text"
@@ -46,8 +42,7 @@
                 android:layout_below="@+id/world_name_text"
                 android:text="@{@string/world_id + viewModel.worldIdText}"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:layout_centerVertical="false" />
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
