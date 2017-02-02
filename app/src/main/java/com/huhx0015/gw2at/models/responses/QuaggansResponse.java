@@ -14,6 +14,13 @@ public class QuaggansResponse implements Parcelable {
     @Expose
     private String url;
 
+    /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
+
+    public QuaggansResponse(String id, String url) {
+        this.id = id;
+        this.url = url;
+    }
+
     /** GET / SET METHODS ______________________________________________________________________ **/
 
     public String getId() {

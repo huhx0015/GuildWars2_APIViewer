@@ -3,7 +3,7 @@
     package="com.huhx0015.gw2at"
     android:installLocation="auto">
 
-    <!--PERMISSIONS:-->
+    <!--PERMISSIONS-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application

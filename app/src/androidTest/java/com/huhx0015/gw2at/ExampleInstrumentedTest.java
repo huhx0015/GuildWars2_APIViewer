@@ -3,10 +3,8 @@ package com.huhx0015.gw2at;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import static org.junit.Assert.*;
 
 /**
@@ -21,6 +19,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.huhx0015.mgw2s", appContext.getPackageName());
+        assertEquals("com.huhx0015.gw2at", appContext.getPackageName());
     }
 }
