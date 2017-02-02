@@ -4,6 +4,11 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_character"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/character"
+            android:visible="false" />
+        <item
             android:id="@+id/nav_server_status"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/server_status" />

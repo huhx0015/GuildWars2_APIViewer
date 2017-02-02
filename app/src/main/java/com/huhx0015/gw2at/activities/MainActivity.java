@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(mBinding.mainFragmentContainer.getId(), fragment);
-        fragmentTransaction.addToBackStack(null);
+        //fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
 }

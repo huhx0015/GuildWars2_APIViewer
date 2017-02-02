@@ -3,9 +3,13 @@
     <!--APPLICATION STRINGS-->
     <string name="app_name">Guild Wars 2 API Viewer</string>
 
+    <!--CREDENTIALS-->
+    <string name="app_api_key">ADD-YOUR-GUILD-WARS-2-API-KEY-HERE</string>
+
     <!--MENU STRINGS-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="character">Character</string>
     <string name="settings">Settings</string>
     <string name="quit">Quit</string>
 
