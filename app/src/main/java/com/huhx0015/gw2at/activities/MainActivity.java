@@ -1,13 +1,13 @@
 package com.huhx0015.gw2at.activities;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -18,13 +18,17 @@ import com.huhx0015.gw2at.fragments.QuaggansFragment;
 import com.huhx0015.gw2at.fragments.ServerStatusFragment;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
 
-public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener, NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener,
+        NavigationView.OnNavigationItemSelectedListener {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // DATABINDING VARIABLES
     private ActivityMainBinding mBinding;
     private MainActivityViewModel mViewModel;
+
+    // FRAGMENT VARIABLES
+    private String mFragmentTag;
 
     // LOGGING VARIABLES
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -34,22 +38,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initBinding();
-        initToolbar();
-        initDrawer();
-
-        //loadFragment(ServerStatusFragment.newInstance()); // TODO: Testing.
-        loadFragment(QuaggansFragment.newInstance()); // TODO: Testing.
+        initView();
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mBinding.mainDrawer.isDrawerOpen(GravityCompat.START)) {
+            mBinding.mainDrawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -69,25 +66,28 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        switch (item.getItemId()) {
 
-        } else if (id == R.id.nav_slideshow) {
+            // SERVER STATUS:
+            case R.id.nav_server_status:
+                loadFragment(ServerStatusFragment.newInstance());
+                mViewModel.setSubToolbarText(getString(R.string.server_status));
+                break;
 
-        } else if (id == R.id.nav_manage) {
+            // QUAGGANS:
+            case R.id.nav_quaggans:
+                loadFragment(QuaggansFragment.newInstance());
+                mViewModel.setSubToolbarText(getString(R.string.quaggans));
+                break;
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            // QUIT:
+            case R.id.nav_quit:
+                finish();
+                break;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mBinding.mainDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -102,7 +102,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     /** LAYOUT METHODS _________________________________________________________________________ **/
+
+    private void initView() {
+        initBinding();
+        initToolbar();
+        initDrawer();
+        initText();
+    }
 
     private void initBinding() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -124,12 +136,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         mBinding.mainNavView.setNavigationItemSelectedListener(this);
     }
 
+    private void initText() {
+        mBinding.mainSubToolbarText.setShadowLayer(2, 2, 2, Color.BLACK);
+    }
+
     /** FRAGMENT METHODS _______________________________________________________________________ **/
 
     private void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.content_main, fragment);
+        fragmentTransaction.replace(mBinding.mainFragmentContainer.getId(), fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commitAllowingStateLoss();
     }

@@ -7,14 +7,4 @@ import android.databinding.BaseObservable;
  */
 
 public class ApiFragmentViewModel extends BaseObservable {
-
-    private String mApiNameText;
-
-    public ApiFragmentViewModel(String apiName) {
-        this.mApiNameText = apiName;
-    }
-
-    public String getApiNameText() {
-        return mApiNameText;
-    }
 }

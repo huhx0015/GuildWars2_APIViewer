@@ -1,20 +1,22 @@
 <resources>
 
     <!--APPLICATION STRINGS-->
-    <string name="app_name">Guild Wars 2 API Tester</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Guild Wars 2 API Viewer</string>
 
-    <!--QUAGGANS-->
+    <!--MENU STRINGS-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="settings">Settings</string>
+    <string name="quit">Quit</string>
+
+    <!--QUAGGANS STRINGS-->
     <string name="quaggans">Quaggans</string>
 
     <!--SERVER STATUS STRINGS-->
     <string name="retry">Retry</string>
-    <string name="server_status">SERVER STATUS</string>
+    <string name="server_status">Server Status</string>
     <string name="world">WORLD</string>
     <string name="world_id">ID:\u0020</string>
     <string name="title_activity_main2">Main2Activity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

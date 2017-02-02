@@ -36,7 +36,38 @@
 
             </android.support.design.widget.AppBarLayout>
 
-            <include layout="@layout/content_main" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@color/colorAccent"
+                    android:elevation="2dp"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.subToolbarText}"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center"
+                        android:id="@+id/main_sub_toolbar_text" />
+
+                </android.support.v7.widget.Toolbar>
+
+                <RelativeLayout
+                    android:id="@+id/main_fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/main_fab"
@@ -56,7 +87,7 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/activity_main2_drawer" />
+            app:menu="@menu/activity_main_drawer" />
 
     </android.support.v4.widget.DrawerLayout>
 

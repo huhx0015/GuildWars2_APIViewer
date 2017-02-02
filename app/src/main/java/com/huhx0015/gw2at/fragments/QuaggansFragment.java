@@ -20,7 +20,6 @@ import com.huhx0015.gw2at.ui.adapters.QuaggansAdapter;
 import com.huhx0015.gw2at.utils.DialogUtils;
 import com.huhx0015.gw2at.utils.DisplayUtils;
 import com.huhx0015.gw2at.utils.SnackbarUtils;
-import com.huhx0015.gw2at.viewmodels.fragments.ApiFragmentViewModel;
 import java.util.ArrayList;
 import java.util.List;
 import io.reactivex.Observable;
@@ -65,8 +64,6 @@ public class QuaggansFragment extends ApiFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_api, null, false);
-        ApiFragmentViewModel viewModel = new ApiFragmentViewModel(getString(R.string.quaggans));
-        mBinding.setViewModel(viewModel);
         initLayout();
 
         if (savedInstanceState != null) {
@@ -91,7 +88,6 @@ public class QuaggansFragment extends ApiFragment {
 
     private void initLayout() {
         initRecyclerView();
-        initText();
     }
 
     private void initRecyclerView() {
@@ -105,10 +101,6 @@ public class QuaggansFragment extends ApiFragment {
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
         mBinding.apiRecyclerview.setDrawingCacheEnabled(true);
         mBinding.apiRecyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-    }
-
-    private void initText() {
-        mBinding.apiNameText.setShadowLayer(4, 2, 2, Color.BLACK);
     }
 
     private void setRecyclerView() {
