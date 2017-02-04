@@ -1,14 +1,12 @@
 package com.huhx0015.gw2at.data;
 
 import com.huhx0015.gw2at.models.responses.account.AccountResponse;
-import javax.inject.Singleton;
 
 /**
  * Created by Michael Yoon Huh on 2/2/2017.
  */
 
-@Singleton
-public class GW2User {
+public class GW2Account {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -21,15 +19,15 @@ public class GW2User {
 
     /** INSTANCE VARIABLE ______________________________________________________________________ **/
 
-    private static GW2User mGW2User;
+    private static GW2Account mGW2Account;
 
     /** INSTANCE METHODS _______________________________________________________________________ **/
 
-    public static GW2User getInstance() {
-        if (mGW2User == null) {
-            mGW2User = new GW2User();
+    public static GW2Account getInstance() {
+        if (mGW2Account == null) {
+            mGW2Account = new GW2Account();
         }
-        return mGW2User;
+        return mGW2Account;
     }
 
     /** GET METHODS ____________________________________________________________________________ **/

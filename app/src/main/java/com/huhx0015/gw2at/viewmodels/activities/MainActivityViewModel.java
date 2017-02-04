@@ -19,14 +19,14 @@ public class MainActivityViewModel extends BaseObservable {
     // LISTENER VARIABLES:
     private MainActivityViewModelListener mListener;
 
-    /** GET / SET METHODS ______________________________________________________________________ **/
+    /** SET METHODS ____________________________________________________________________________ **/
 
     public void setSubToolbarText(String text) {
         this.subToolbarText = text;
         notifyPropertyChanged(BR.subToolbarText);
     }
 
-    /** VIEW MODEL METHODS _____________________________________________________________________ **/
+    /** LISTENER METHODS _______________________________________________________________________ **/
 
     public void setViewModelListener(MainActivityViewModelListener listener) {
         this.mListener = listener;

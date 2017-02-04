@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import com.huhx0015.gw2at.application.GW2Application;
+
 import javax.inject.Inject;
 import retrofit2.Retrofit;
 

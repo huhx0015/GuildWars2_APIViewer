@@ -4,14 +4,20 @@
     <string name="app_name">Guild Wars 2 API Viewer</string>
 
     <!--CREDENTIALS-->
-    <string name="app_api_key">ADD-YOUR-GUILD-WARS-2-API-KEY-HERE</string>
+    <!--Note: Add your Guild Wars 2 API key to app_api_key.-->
+    <string name="app_api_key"></string>
 
     <!--MENU STRINGS-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="character">Character</string>
+    <string name="login">Login</string>
     <string name="settings">Settings</string>
     <string name="quit">Quit</string>
+
+    <!--LOGIN STRINGS-->
+    <string name="login_description">Please input a valid Guild Wars 2 API key.\nYou can acquire a Guild Wars 2 API key at:\n\nhttps://account.arena.net/applications</string>
+    <string name="login_api_key_field">API Key</string>
 
     <!--QUAGGANS STRINGS-->
     <string name="quaggans">Quaggans</string>
@@ -21,6 +27,5 @@
     <string name="server_status">Server Status</string>
     <string name="world">WORLD</string>
     <string name="world_id">ID:\u0020</string>
-    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

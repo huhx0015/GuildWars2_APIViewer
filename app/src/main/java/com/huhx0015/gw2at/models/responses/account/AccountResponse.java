@@ -27,6 +27,9 @@ public class AccountResponse {
     @SerializedName("access")
     @Expose
     private String access;
+    @SerializedName("text")
+    @Expose
+    private String text;
 
     public String getId() {
         return id;
@@ -84,4 +87,11 @@ public class AccountResponse {
         this.access = access;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

@@ -11,6 +11,9 @@ public class GW2Constants {
     public static final String API_VERSION_1 = "v1/";
     public static final String API_VERSION_2 = "v2/";
 
+    // API CONSTANTS:
+    public static final String API_BEARER = "Bearer ";
+
     // SERVER POPULATION CONSTANTS:
     public static final String POPULATION_LOW = "Low";
     public static final String POPULATION_MEDIUM = "Medium";

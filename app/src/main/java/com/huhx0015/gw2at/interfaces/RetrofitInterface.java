@@ -137,72 +137,72 @@ public interface RetrofitInterface {
 
     // ACCOUNT:
     @GET("account")
-    Observable<AccountResponse> getAccount(@Header("Authorization") String bearer);
+    Observable<AccountResponse> getAccount(@Header("Authorization") String token);
     Observable<AccountResponse> getAccountToken(@Query("access_token") String token);
 
     // ACCOUNT/ACHIEVEMENTS:
     @GET("account/achievements")
-    Observable<AccountAchievementsResponse> getAccountAchievements(@Header("Authorization") String bearer);
+    Observable<AccountAchievementsResponse> getAccountAchievements(@Header("Authorization") String token);
     Observable<AccountAchievementsResponse> getAccountAchievementsToken(@Query("access_token") String token);
 
     // ACCOUNT/BANK:
     @GET("account/achievements")
-    Observable<AccountBankResponse> getAccountBank(@Header("Authorization") String bearer);
+    Observable<AccountBankResponse> getAccountBank(@Header("Authorization") String token);
     Observable<AccountBankResponse> getAccountBankToken(@Query("access_token") String token);
 
     // ACCOUNT/DYES:
     @GET("account/dyes")
-    Observable<List<Integer>> getAccountDyes(@Header("Authorization") String bearer);
+    Observable<List<Integer>> getAccountDyes(@Header("Authorization") String token);
     Observable<List<Integer>> getAccountDyesToken(@Query("access_token") String token);
 
     // ACCOUNT/FINISHERS:
     @GET("account/finishers")
-    Observable<AccountFinishersResponse> getAccountFinishers(@Header("Authorization") String bearer);
+    Observable<AccountFinishersResponse> getAccountFinishers(@Header("Authorization") String token);
     Observable<AccountFinishersResponse> getAccountFinishersToken(@Query("access_token") String token);
 
     // ACCOUNT/INVENTORY:
     @GET("account/inventory")
-    Observable<AccountInventoryResponse> getAccountInventory(@Header("Authorization") String bearer);
+    Observable<AccountInventoryResponse> getAccountInventory(@Header("Authorization") String token);
     Observable<AccountInventoryResponse> getAccountInventoryToken(@Query("access_token") String token);
 
     // ACCOUNT/INVENTORY:
     @GET("account/masteries")
-    Observable<AccountMasteriesResponse> getAccountMasteries(@Header("Authorization") String bearer);
+    Observable<AccountMasteriesResponse> getAccountMasteries(@Header("Authorization") String token);
     Observable<AccountMasteriesResponse> getAccountMasteriesToken(@Query("access_token") String token);
 
     // ACCOUNT/MATERIALS:
     @GET("account/materials")
-    Observable<AccountMaterialsResponse> getAccountMaterials(@Header("Authorization") String bearer);
+    Observable<AccountMaterialsResponse> getAccountMaterials(@Header("Authorization") String token);
     Observable<AccountMaterialsResponse> getAccountMaterialsToken(@Query("access_token") String token);
 
     // ACCOUNT/MINIS:
     @GET("account/minis")
-    Observable<List<Integer>> getAccountMinis(@Header("Authorization") String bearer);
+    Observable<List<Integer>> getAccountMinis(@Header("Authorization") String token);
     Observable<List<Integer>> getAccountMinisToken(@Query("access_token") String token);
 
     // ACCOUNT/OUTFITS:
     @GET("account/outfits")
-    Observable<List<Integer>> getAccountOutfits(@Header("Authorization") String bearer);
+    Observable<List<Integer>> getAccountOutfits(@Header("Authorization") String token);
     Observable<List<Integer>> getAccountOutfitsToken(@Query("access_token") String token);
 
     // ACCOUNT/RECIPES:
     @GET("account/recipes")
-    Observable<List<Integer>> getAccountRecipes(@Header("Authorization") String bearer);
+    Observable<List<Integer>> getAccountRecipes(@Header("Authorization") String token);
     Observable<List<Integer>> getAccountRecipesToken(@Query("access_token") String token);
 
     // ACCOUNT/SKINS:
     @GET("account/skins")
-    Observable<List<Integer>> getAccountSkins(@Header("Authorization") String bearer);
+    Observable<List<Integer>> getAccountSkins(@Header("Authorization") String token);
     Observable<List<Integer>> getAccountSkinsToken(@Query("access_token") String token);
 
     // ACCOUNT/TITLES:
     @GET("account/titles")
-    Observable<List<Integer>> getAccountTitles(@Header("Authorization") String bearer);
+    Observable<List<Integer>> getAccountTitles(@Header("Authorization") String token);
     Observable<List<Integer>> getAccountTitlesToken(@Query("access_token") String token);
 
     // ACCOUNT/WALLET:
     @GET("account/wallet")
-    Observable<WalletResponse> getAccountWallet(@Header("Authorization") String bearer);
+    Observable<WalletResponse> getAccountWallet(@Header("Authorization") String token);
     Observable<WalletResponse> getAccountWalletToken(@Query("access_token") String token);
 
     // ACHIEVEMENTS:
@@ -260,88 +260,88 @@ public interface RetrofitInterface {
 
     // CHARACTERS:
     @GET("characters")
-    Observable<List<String>> getCharacters(@Header("Authorization") String bearer);
+    Observable<List<String>> getCharacters(@Header("Authorization") String token);
     @GET("characters/")
     Observable<List<String>> getCharactersToken(@Query("access_token") String token);
 
     @GET("characters")
-    Observable<List<String>> getAccountCharacters(@Header("Authorization") String bearer,
+    Observable<List<String>> getAccountCharacters(@Header("Authorization") String token,
                                                   @Query("page") String page);
     @GET("characters/")
     Observable<List<String>> getAccountCharactersToken(@Query("access_token") String token,
                                                        @Query("page") String page);
 
     @GET("characters/{id}")
-    Observable<CharacterOverviewResponse> getCharacter(@Header("Authorization") String bearer,
+    Observable<CharacterOverviewResponse> getCharacter(@Header("Authorization") String token,
                                                        @Path("id") String id);
     @GET("characters/")
     Observable<List<String>> getCharacterToken(@Query("access_token") String token);
 
     @GET("characters/{id}/backstory")
-    Observable<CharacterBackstoryResponse> getCharacterBackstory(@Header("Authorization") String bearer,
+    Observable<CharacterBackstoryResponse> getCharacterBackstory(@Header("Authorization") String token,
                                                                  @Path("id") String id);
     @GET("characters/{id}/backstory")
     Observable<CharacterBackstoryResponse> getCharacterBackstoryToken(@Path("id") String id,
                                                                       @Query("access_token") String token);
 
     @GET("characters/{id}/core")
-    Observable<CharacterCoreResponse> getCharacterCore(@Header("Authorization") String bearer,
+    Observable<CharacterCoreResponse> getCharacterCore(@Header("Authorization") String token,
                                                        @Path("id") String id);
     @GET("characters/{id}/core")
     Observable<CharacterCoreResponse> getCharacterCoreToken(@Path("id") String id,
                                                             @Query("access_token") String token);
 
     @GET("characters/{id}/crafting")
-    Observable<CharacterCraftingResponse> getCharacterCrafting(@Header("Authorization") String bearer,
+    Observable<CharacterCraftingResponse> getCharacterCrafting(@Header("Authorization") String token,
                                                                @Path("id") String id);
     @GET("characters/{id}/crafting")
     Observable<CharacterCraftingResponse> getCharacterCraftingToken(@Path("id") String id,
                                                                     @Query("access_token") String token);
 
     @GET("characters/{id}/equipment")
-    Observable<CharacterEquipmentResponse> getCharacterEquipment(@Header("Authorization") String bearer,
+    Observable<CharacterEquipmentResponse> getCharacterEquipment(@Header("Authorization") String token,
                                                                  @Path("id") String id);
     @GET("characters/{id}/equipment")
     Observable<CharacterEquipmentResponse> getCharacterEquipmentToken(@Path("id") String id,
                                                                       @Query("access_token") String token);
 
     @GET("characters/{id}/heropoints")
-    Observable<List<String>> getCharacterHeropoints(@Header("Authorization") String bearer,
+    Observable<List<String>> getCharacterHeropoints(@Header("Authorization") String token,
                                                     @Path("id") String id);
     @GET("characters/{id}/heropoints")
     Observable<List<String>> getCharacterHeropointsToken(@Path("id") String id,
                                                          @Query("access_token") String token);
 
     @GET("characters/{id}/inventory")
-    Observable<CharacterInventoryResponse> getCharacterInventory(@Header("Authorization") String bearer,
+    Observable<CharacterInventoryResponse> getCharacterInventory(@Header("Authorization") String token,
                                                                  @Path("id") String id);
     @GET("characters/{id}/inventory")
     Observable<CharacterInventoryResponse> getCharacterInventoryToken(@Path("id") String id,
                                                                       @Query("access_token") String token);
 
     @GET("characters/{id}/recipes")
-    Observable<List<Integer>> getCharacterRecipes(@Header("Authorization") String bearer,
+    Observable<List<Integer>> getCharacterRecipes(@Header("Authorization") String token,
                                                   @Path("id") String id);
     @GET("characters/{id}/recipes")
     Observable<List<Integer>> getCharacterRecipesToken(@Path("id") String id,
                                                        @Query("access_token") String token);
 
     @GET("characters/{id}/skills")
-    Observable<CharacterSkillsResponse> getCharacterSkills(@Header("Authorization") String bearer,
+    Observable<CharacterSkillsResponse> getCharacterSkills(@Header("Authorization") String token,
                                                            @Path("id") String id);
     @GET("characters/{id}/skills")
     Observable<CharacterSkillsResponse> getCharacterSkillsToken(@Path("id") String id,
                                                                 @Query("access_token") String token);
 
     @GET("characters/{id}/specializations")
-    Observable<CharacterSpecializationsResponse> getCharacterSpecializations(@Header("Authorization") String bearer,
+    Observable<CharacterSpecializationsResponse> getCharacterSpecializations(@Header("Authorization") String token,
                                                                              @Path("id") String id);
     @GET("characters/{id}/specializations")
     Observable<CharacterSpecializationsResponse> getCharacterSpecializationsToken(@Path("id") String id,
                                                                                   @Query("access_token") String token);
 
     @GET("characters/{id}/training")
-    Observable<CharacterTrainingResponse> getCharacterTraining(@Header("Authorization") String bearer,
+    Observable<CharacterTrainingResponse> getCharacterTraining(@Header("Authorization") String token,
                                                                @Path("id") String id);
     @GET("characters/{id}/training")
     Observable<CharacterTrainingResponse> getCharacterTrainingToken(@Path("id") String id,
@@ -379,16 +379,16 @@ public interface RetrofitInterface {
 
     // COMMERCE/TRANSACTIONS:
     @GET("commerce/transactions")
-    Observable<List<String>> getTransactionSecondaryEndpoints(@Header("Authorization") String bearer);
+    Observable<List<String>> getTransactionSecondaryEndpoints(@Header("Authorization") String token);
 
     // COMMERCE/TRANSACTIONS: ["current" | "history"]
     @GET("commerce/transactions/{secondary}")
-    Observable<List<String>> getTransactionTertiaryEndpoints(@Header("Authorization") String bearer,
+    Observable<List<String>> getTransactionTertiaryEndpoints(@Header("Authorization") String token,
                                                              @Path("secondary") String secondary);
 
     // COMMERCE/TRANSACTIONS: ["current/buys" | "current/sells" | "history/buys" | "history/sells"]
     @GET("commerce/transactions/{secondary}/{tertiary}")
-    Observable<CommerceTransactionsResponse> getTransactions(@Header("Authorization") String bearer,
+    Observable<CommerceTransactionsResponse> getTransactions(@Header("Authorization") String token,
                                                              @Path("secondary") String secondary,
                                                              @Path("tertiary") String tertiary);
 
@@ -418,7 +418,7 @@ public interface RetrofitInterface {
 
     // TOKEN INFO:
     @GET("tokeninfo")
-    Observable<TokenInfoResponse> getTokenInfo(@Header("Authorization") String bearer);
+    Observable<TokenInfoResponse> getTokenInfo(@Header("Authorization") String token);
 
     @GET("tokeninfo")
     Observable<TokenInfoResponse> getTokenInfoToken(@Query("access_token") String token);

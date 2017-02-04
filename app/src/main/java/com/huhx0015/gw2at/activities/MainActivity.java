@@ -13,10 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.huhx0015.gw2at.R;
+import com.huhx0015.gw2at.data.GW2Account;
 import com.huhx0015.gw2at.databinding.ActivityMainBinding;
+import com.huhx0015.gw2at.fragments.LoginFragment;
 import com.huhx0015.gw2at.fragments.QuaggansFragment;
 import com.huhx0015.gw2at.fragments.ServerStatusFragment;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener,
         NavigationView.OnNavigationItemSelectedListener {
@@ -33,12 +36,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     // LOGGING VARIABLES
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    // DEPENDENCY INJECTION VARIABLES
+    @Inject GW2Account mAccount;
+
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+
+        loadFragment(LoginFragment.newInstance());
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
@@ -68,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+            // LOGIN:
+            case R.id.nav_login:
+                loadFragment(LoginFragment.newInstance());
+                mViewModel.setSubToolbarText(getString(R.string.login));
+                break;
 
             // SERVER STATUS:
             case R.id.nav_server_status:

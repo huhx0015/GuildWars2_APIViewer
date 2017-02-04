@@ -13,6 +13,8 @@ import com.huhx0015.gw2at.BR;
 
 public class ServerStatusViewModel extends BaseObservable {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
     @Bindable
     public Drawable serverStatusDrawable;
     @Bindable
@@ -21,6 +23,8 @@ public class ServerStatusViewModel extends BaseObservable {
     public String worldIdText;
     @Bindable
     public String worldNameText;
+
+    /** SET METHODS ____________________________________________________________________________ **/
 
     public void setServerStatusDrawable(int drawable, Context context) {
         this.serverStatusDrawable = ContextCompat.getDrawable(context, drawable);
