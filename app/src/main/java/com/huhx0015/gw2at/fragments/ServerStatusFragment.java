@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.databinding.FragmentApiBinding;
+import com.huhx0015.gw2at.databinding.FragmentApiRecyclerviewBinding;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
 import com.huhx0015.gw2at.models.responses.WorldsResponse;
 import com.huhx0015.gw2at.ui.adapters.ServerStatusAdapter;
@@ -35,7 +35,7 @@ public class ServerStatusFragment extends ApiFragment {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // DATABINDING VARIABLES
-    private FragmentApiBinding mBinding;
+    private FragmentApiRecyclerviewBinding mBinding;
 
     // DATA VARIABLES
     private List<WorldsResponse> mWorldList;
@@ -57,7 +57,7 @@ public class ServerStatusFragment extends ApiFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_api, null, false);
+        mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_api_recyclerview, null, false);
         initLayout();
 
         if (savedInstanceState != null) {

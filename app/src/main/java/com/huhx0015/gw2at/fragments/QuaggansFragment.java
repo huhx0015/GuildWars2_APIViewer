@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.databinding.FragmentApiBinding;
+import com.huhx0015.gw2at.databinding.FragmentApiRecyclerviewBinding;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
 import com.huhx0015.gw2at.models.responses.QuaggansResponse;
 import com.huhx0015.gw2at.ui.adapters.QuaggansAdapter;
@@ -37,7 +37,7 @@ public class QuaggansFragment extends ApiFragment {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // DATABINDING VARIABLES
-    private FragmentApiBinding mBinding;
+    private FragmentApiRecyclerviewBinding mBinding;
 
     // DATA VARIABLES
     private List<QuaggansResponse> mQuaggansList;
@@ -63,7 +63,7 @@ public class QuaggansFragment extends ApiFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_api, null, false);
+        mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_api_recyclerview, null, false);
         initLayout();
 
         if (savedInstanceState != null) {

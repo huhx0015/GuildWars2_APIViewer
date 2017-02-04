@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.WindowManager;
 import com.huhx0015.gw2at.R;
 
@@ -13,6 +14,8 @@ import com.huhx0015.gw2at.R;
  */
 
 public class DialogUtils {
+
+    private static final String LOG_TAG = DialogUtils.class.getSimpleName();
 
     public static void displayAlertDialog(String title, String message, Context context) {
         new AlertDialog.Builder(context)
@@ -32,7 +35,7 @@ public class DialogUtils {
         try {
             dialog.show();
         } catch (WindowManager.BadTokenException e) {
-
+            Log.e(LOG_TAG, "ERROR: " + e.getLocalizedMessage());
         }
         dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
