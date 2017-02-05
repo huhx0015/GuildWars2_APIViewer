@@ -25,7 +25,7 @@ The model classes were auto-generated using jsonschema2pojo (http://www.jsonsche
 
 ## License
 
-    Copyright 2016 Michael Huh
+    Copyright 2017 Michael Huh
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
