@@ -14,6 +14,10 @@ This application makes use of a Guild Wars 2 API key to access account-specific 
 
 ## Resources
 
+### Documentation
+
+* Guild Wars 2 API: https://wiki.guildwars2.com/wiki/API:Main
+
 ### Libraries
 
 * Dagger 2: https://github.com/google/dagger
