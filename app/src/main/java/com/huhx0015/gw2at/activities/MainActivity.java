@@ -15,23 +15,20 @@ import android.view.MenuItem;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.data.GW2Account;
 import com.huhx0015.gw2at.databinding.ActivityMainBinding;
+import com.huhx0015.gw2at.fragments.CharacterFragment;
 import com.huhx0015.gw2at.fragments.LoginFragment;
 import com.huhx0015.gw2at.fragments.QuaggansFragment;
 import com.huhx0015.gw2at.fragments.ServerStatusFragment;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements MainActivityViewModel.MainActivityViewModelListener,
-        NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // DATABINDING VARIABLES
     private ActivityMainBinding mBinding;
     private MainActivityViewModel mViewModel;
-
-    // FRAGMENT VARIABLES
-    private String mFragmentTag;
 
     // LOGGING VARIABLES
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -44,9 +41,21 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initView();
 
-        loadFragment(LoginFragment.newInstance());
+        // Checks to see if a Guild Wars 2 API key has been set in strings.xml.
+        if (!getString(R.string.app_api_key).isEmpty()) {
+            GW2Account.getInstance().setApiKey(getString(R.string.app_api_key));
+        }
+        boolean isApiKeyAvailable = GW2Account.getInstance().getApiKey() != null;
+        if (isApiKeyAvailable) {
+            loadFragment(CharacterFragment.newInstance());
+            updateNavigationMenu();
+        } else {
+            loadFragment(LoginFragment.newInstance());
+            mViewModel.setSubToolbarText(getString(R.string.login));
+        }
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
@@ -60,17 +69,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public void onFabButtonClicked() {
-
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -81,6 +79,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
             case R.id.nav_login:
                 loadFragment(LoginFragment.newInstance());
                 mViewModel.setSubToolbarText(getString(R.string.login));
+                break;
+
+            // CHARACTER:
+            case R.id.nav_character:
+                loadFragment(CharacterFragment.newInstance());
+                mViewModel.setSubToolbarText(getString(R.string.character));
                 break;
 
             // SERVER STATUS:
@@ -106,17 +110,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
@@ -133,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
     private void initBinding() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mViewModel = new MainActivityViewModel();
-        mViewModel.setViewModelListener(this);
         mBinding.setViewModel(mViewModel);
     }
 
@@ -154,13 +146,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewM
         mBinding.mainSubToolbarText.setShadowLayer(2, 2, 2, Color.BLACK);
     }
 
+    public void updateNavigationMenu() {
+        Menu navMenu = mBinding.mainNavView.getMenu();
+        navMenu.findItem(R.id.nav_login).setVisible(false);
+        navMenu.findItem(R.id.nav_character).setVisible(true);
+        mViewModel.setSubToolbarText(getString(R.string.character));
+    }
+
     /** FRAGMENT METHODS _______________________________________________________________________ **/
 
-    private void loadFragment(Fragment fragment) {
+    public void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(mBinding.mainFragmentContainer.getId(), fragment);
-        //fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
 }

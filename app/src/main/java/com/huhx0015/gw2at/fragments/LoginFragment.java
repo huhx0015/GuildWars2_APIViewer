@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
+import com.huhx0015.gw2at.activities.MainActivity;
 import com.huhx0015.gw2at.constants.GW2Constants;
 import com.huhx0015.gw2at.data.GW2Account;
 import com.huhx0015.gw2at.databinding.FragmentLoginBinding;
@@ -33,9 +34,6 @@ public class LoginFragment extends ApiFragment implements LoginFragmentViewModel
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // DATA VARIABLES
-    private boolean mIsApiKeyAvailable;
-
     // DATABINDING VARIABLES
     private FragmentLoginBinding mBinding;
     private LoginFragmentViewModel mViewModel;
@@ -55,18 +53,9 @@ public class LoginFragment extends ApiFragment implements LoginFragmentViewModel
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.fragment_login, null, false);
-
-        GW2Account.getInstance().setApiKey(getString(R.string.app_api_key));
-
-        mIsApiKeyAvailable = !GW2Account.getInstance().getApiKey().isEmpty();
-        mViewModel = new LoginFragmentViewModel(!mIsApiKeyAvailable);
+        mViewModel = new LoginFragmentViewModel(true);
         mViewModel.setListener(this);
         mBinding.setViewModel(mViewModel);
-
-        if (mIsApiKeyAvailable) {
-            queryAccount(getString(R.string.app_api_key));
-        }
-
         return mBinding.getRoot();
     }
 
@@ -94,6 +83,8 @@ public class LoginFragment extends ApiFragment implements LoginFragmentViewModel
                     public void onNext(AccountResponse value) {
                         GW2Account.getInstance().setAccount(value);
                         mViewModel.setLoginContainerVisible(false);
+                        ((MainActivity) getContext()).loadFragment(CharacterFragment.newInstance());
+                        ((MainActivity) getContext()).updateNavigationMenu();
                     }
 
                     @Override

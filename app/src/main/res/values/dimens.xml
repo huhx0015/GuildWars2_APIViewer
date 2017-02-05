@@ -7,6 +7,9 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
 
+    <!--HEADER DIMENSIONS-->
+    <dimen name="header_avatar_dimens">72dp</dimen>
+
     <!--LOGIN DIMENSIONS-->
     <dimen name="login_button_width">96dp</dimen>
     <dimen name="login_button_height">48dp</dimen>

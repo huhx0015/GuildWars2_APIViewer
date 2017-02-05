@@ -2,6 +2,8 @@ package com.huhx0015.gw2at.data;
 
 import com.huhx0015.gw2at.models.responses.account.AccountResponse;
 
+import java.util.List;
+
 /**
  * Created by Michael Yoon Huh on 2/2/2017.
  */
@@ -13,9 +15,11 @@ public class GW2Account {
     // ACCOUNT VARIABLES
     private AccountResponse mAccount;
 
+    // CHARACTER VARIABLES
+    private List<String> mCharacterList;
+
     // CREDENTIAL VARIABLES
     private String mApiKey;
-    private String mAuthToken;
 
     /** INSTANCE VARIABLE ______________________________________________________________________ **/
 
@@ -40,8 +44,8 @@ public class GW2Account {
         return mApiKey;
     }
 
-    public String getAuthToken() {
-        return mAuthToken;
+    public List<String> getCharacterList() {
+        return mCharacterList;
     }
 
     /** SET METHODS ____________________________________________________________________________ **/
@@ -54,7 +58,7 @@ public class GW2Account {
         this.mApiKey = mApiKey;
     }
 
-    public void setAuthToken(String mAuthToken) {
-        this.mAuthToken = mAuthToken;
+    public void setCharacterList(List<String> characterList) {
+        this.mCharacterList = characterList;
     }
 }

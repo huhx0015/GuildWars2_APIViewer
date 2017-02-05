@@ -16,8 +16,19 @@
     <string name="quit">Quit</string>
 
     <!--LOGIN STRINGS-->
-    <string name="login_description">Please input a valid Guild Wars 2 API key.\nYou can acquire a Guild Wars 2 API key at:\n\nhttps://account.arena.net/applications</string>
+    <string name="login_description">Please input a valid Guild Wars 2 API key to view account-specific data.\nYou can acquire a Guild Wars 2 API key at:\n\nhttps://account.arena.net/applications</string>
     <string name="login_api_key_field">API Key</string>
+
+    <!--CHARACTER STRINGS-->
+    <string name="character_name">NAME:\u0020</string>
+    <string name="character_race">RACE:\u0020</string>
+    <string name="character_gender">GENDER:\u0020</string>
+    <string name="character_profession">PROFESSION:\u0020</string>
+    <string name="character_level">LEVEL:\u0020</string>
+    <string name="character_guild">GUILD:\u0020</string>
+    <string name="character_age">AGE:\u0020</string>
+    <string name="character_created">CREATED:\u0020</string>
+    <string name="character_deaths">DEATHS:\u0020</string>
 
     <!--QUAGGANS STRINGS-->
     <string name="quaggans">Quaggans</string>

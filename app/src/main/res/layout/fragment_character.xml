@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.huhx0015.gw2at.viewmodels.fragments.CharacterFragmentViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.characterVisibility ? View.VISIBLE : View.GONE}">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_name_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_name + viewModel.characterName}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_race_text"
+                            android:layout_below="@+id/character_name_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_race + viewModel.characterRace}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_gender_text"
+                            android:layout_below="@+id/character_race_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_gender + viewModel.characterGender}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_profession_text"
+                            android:layout_below="@+id/character_gender_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_profession + viewModel.characterProfession}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_level_text"
+                            android:layout_below="@+id/character_profession_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_level + viewModel.characterLevel}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_guild_text"
+                            android:layout_below="@+id/character_level_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_guild + viewModel.characterGuild}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_age_text"
+                            android:layout_below="@+id/character_guild_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_age + viewModel.characterAge}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_created_text"
+                            android:layout_below="@+id/character_age_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_created + viewModel.characterCreated}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/character_deaths_text"
+                            android:layout_below="@+id/character_created_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/character_deaths + viewModel.characterDeaths}"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

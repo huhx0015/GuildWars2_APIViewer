@@ -13,11 +13,14 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_placeholder"
+        android:background="@android:color/white"
+        app:riv_corner_radius="30dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="true"
+        android:layout_width="@dimen/header_avatar_dimens"
+        android:layout_height="@dimen/header_avatar_dimens" />
 
     <TextView
         android:layout_width="match_parent"
@@ -25,11 +28,5 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="android.studio@android.com" />
 
 </LinearLayout>
