@@ -30,8 +30,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActivityMainBinding mBinding;
     private MainActivityViewModel mViewModel;
 
+    // FRAGMENT VARIABLES
+    private String mFragmentTag;
+
     // LOGGING VARIABLES
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+    // PARCELABLE VARIABLES
+    private static final String MAIN_ACTIVITY_FRAGMENT_TAG = LOG_TAG + "_FRAGMENT_TAG";
+    private static final String MAIN_ACTIVITY_TOOLBAR_TITLE = LOG_TAG + "_TOOLBAR_TITLE";
+
+    // TOOLBAR VARIABLES
+    private String mToolbarTitle;
 
     // DEPENDENCY INJECTION VARIABLES
     @Inject GW2Account mAccount;
@@ -44,17 +54,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initView();
 
-        // Checks to see if a Guild Wars 2 API key has been set in strings.xml.
-        if (!getString(R.string.app_api_key).isEmpty()) {
-            GW2Account.getInstance().setApiKey(getString(R.string.app_api_key));
-        }
-        boolean isApiKeyAvailable = GW2Account.getInstance().getApiKey() != null;
-        if (isApiKeyAvailable) {
-            loadFragment(CharacterFragment.newInstance());
-            updateNavigationMenu();
+        if (savedInstanceState == null) {
+
+            // Checks to see if a Guild Wars 2 API key has been set in strings.xml.
+            if (!getString(R.string.app_api_key).isEmpty()) {
+                GW2Account.getInstance().setApiKey(getString(R.string.app_api_key));
+            }
+            boolean isApiKeyAvailable = GW2Account.getInstance().getApiKey() != null;
+            if (isApiKeyAvailable) {
+                loadFragment(CharacterFragment.newInstance(), CharacterFragment.class.getSimpleName());
+                updateNavigationMenu();
+            } else {
+                loadFragment(LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
+                setToolbarText(getString(R.string.login));
+            }
         } else {
-            loadFragment(LoginFragment.newInstance());
-            mViewModel.setSubToolbarText(getString(R.string.login));
+            this.mFragmentTag = savedInstanceState.getString(MAIN_ACTIVITY_FRAGMENT_TAG);
+            this.mToolbarTitle = savedInstanceState.getString(MAIN_ACTIVITY_TOOLBAR_TITLE);
+            setToolbarText(mToolbarTitle);
         }
     }
 
@@ -77,26 +94,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // LOGIN:
             case R.id.nav_login:
-                loadFragment(LoginFragment.newInstance());
-                mViewModel.setSubToolbarText(getString(R.string.login));
+                loadFragment(LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
+                setToolbarText(getString(R.string.login));
                 break;
 
             // CHARACTER:
             case R.id.nav_character:
-                loadFragment(CharacterFragment.newInstance());
-                mViewModel.setSubToolbarText(getString(R.string.character));
+                loadFragment(CharacterFragment.newInstance(), CharacterFragment.class.getSimpleName());
+                setToolbarText(getString(R.string.character));
                 break;
 
             // SERVER STATUS:
             case R.id.nav_server_status:
-                loadFragment(ServerStatusFragment.newInstance());
-                mViewModel.setSubToolbarText(getString(R.string.server_status));
+                loadFragment(ServerStatusFragment.newInstance(), ServerStatusFragment.class.getSimpleName());
+                setToolbarText(getString(R.string.server_status));
                 break;
 
             // QUAGGANS:
             case R.id.nav_quaggans:
-                loadFragment(QuaggansFragment.newInstance());
-                mViewModel.setSubToolbarText(getString(R.string.quaggans));
+                loadFragment(QuaggansFragment.newInstance(), QuaggansFragment.class.getSimpleName());
+                setToolbarText(getString(R.string.quaggans));
                 break;
 
             // QUIT:
@@ -112,6 +129,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putString(MAIN_ACTIVITY_FRAGMENT_TAG, mFragmentTag);
+        outState.putString(MAIN_ACTIVITY_TOOLBAR_TITLE, mToolbarTitle);
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -129,10 +148,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mBinding.setViewModel(mViewModel);
     }
 
-    private void initToolbar() {
-        setSupportActionBar(mBinding.mainToolbar);
-    }
-
     private void initDrawer() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mBinding.mainDrawer,
                 mBinding.mainToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -146,16 +161,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mBinding.mainSubToolbarText.setShadowLayer(2, 2, 2, Color.BLACK);
     }
 
+    private void initToolbar() {
+        setSupportActionBar(mBinding.mainToolbar);
+    }
+
+    private void setToolbarText(String text) {
+        this.mToolbarTitle = text;
+        mViewModel.setSubToolbarText(text);
+    }
+
     public void updateNavigationMenu() {
         Menu navMenu = mBinding.mainNavView.getMenu();
         navMenu.findItem(R.id.nav_login).setVisible(false);
         navMenu.findItem(R.id.nav_character).setVisible(true);
-        mViewModel.setSubToolbarText(getString(R.string.character));
+        setToolbarText(getString(R.string.character));
     }
 
     /** FRAGMENT METHODS _______________________________________________________________________ **/
 
-    public void loadFragment(Fragment fragment) {
+    public void loadFragment(Fragment fragment, String tag) {
+        this.mFragmentTag = tag;
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(mBinding.mainFragmentContainer.getId(), fragment);

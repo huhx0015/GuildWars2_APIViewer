@@ -83,7 +83,8 @@ public class LoginFragment extends ApiFragment implements LoginFragmentViewModel
                     public void onNext(AccountResponse value) {
                         GW2Account.getInstance().setAccount(value);
                         mViewModel.setLoginContainerVisible(false);
-                        ((MainActivity) getContext()).loadFragment(CharacterFragment.newInstance());
+                        ((MainActivity) getContext()).loadFragment(CharacterFragment.newInstance(),
+                                CharacterFragment.class.getSimpleName());
                         ((MainActivity) getContext()).updateNavigationMenu();
                     }
 
