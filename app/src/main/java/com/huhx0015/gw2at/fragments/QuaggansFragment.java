@@ -43,7 +43,7 @@ public class QuaggansFragment extends ApiFragment {
     private List<QuaggansResponse> mQuaggansList;
 
     // LOGGING VARIABLES
-    private static final String LOG_TAG = ServerStatusFragment.class.getSimpleName();
+    private static final String LOG_TAG = QuaggansFragment.class.getSimpleName();
 
     // RECYCLERVIEW VARIABLES
     private static final int QUAGGANS_GRID_PORTRAIT_COLUMNS = 2;
@@ -99,12 +99,15 @@ public class QuaggansFragment extends ApiFragment {
         }
 
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
+        mBinding.apiRecyclerview.setHasFixedSize(true);
+        mBinding.apiRecyclerview.setItemViewCacheSize(30);
         mBinding.apiRecyclerview.setDrawingCacheEnabled(true);
         mBinding.apiRecyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }
 
     private void setRecyclerView() {
         QuaggansAdapter adapter = new QuaggansAdapter(mQuaggansList, mContext);
+        adapter.setHasStableIds(true);
         mBinding.apiRecyclerview.setAdapter(adapter);
     }
 

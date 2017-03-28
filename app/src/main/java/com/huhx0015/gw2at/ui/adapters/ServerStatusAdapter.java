@@ -52,13 +52,18 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
     public int getItemCount() {
         return mWorldList.size();
     }
 
     /** SUBCLASSES _____________________________________________________________________________ **/
 
-    static class ServerStatusViewHolder extends RecyclerView.ViewHolder {
+    class ServerStatusViewHolder extends RecyclerView.ViewHolder {
 
         private AdapterServerStatusBinding mBinding;
 

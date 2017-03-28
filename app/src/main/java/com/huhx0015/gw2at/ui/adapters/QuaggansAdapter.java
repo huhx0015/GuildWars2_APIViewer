@@ -51,13 +51,22 @@ public class QuaggansAdapter extends RecyclerView.Adapter<QuaggansAdapter.Quagga
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
     public int getItemCount() {
-        return mQuaggansList.size();
+        if (mQuaggansList != null) {
+            return mQuaggansList.size();
+        } else {
+            return 0;
+        }
     }
 
     /** SUBCLASSES _____________________________________________________________________________ **/
 
-    static class QuaggansViewHolder extends RecyclerView.ViewHolder {
+    class QuaggansViewHolder extends RecyclerView.ViewHolder {
 
         private AdapterQuaggansBinding mBinding;
 

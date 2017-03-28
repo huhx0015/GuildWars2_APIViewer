@@ -87,10 +87,15 @@ public class ServerStatusFragment extends ApiFragment {
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
+        mBinding.apiRecyclerview.setHasFixedSize(true);
+        mBinding.apiRecyclerview.setItemViewCacheSize(30);
+        mBinding.apiRecyclerview.setDrawingCacheEnabled(true);
+        mBinding.apiRecyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }
 
     private void setRecyclerView() {
         ServerStatusAdapter adapter = new ServerStatusAdapter(mWorldList, mContext);
+        adapter.setHasStableIds(true);
         mBinding.apiRecyclerview.setAdapter(adapter);
     }
 
