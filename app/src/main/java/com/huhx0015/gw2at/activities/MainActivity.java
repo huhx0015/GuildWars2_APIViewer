@@ -19,6 +19,7 @@ import com.huhx0015.gw2at.fragments.CharacterFragment;
 import com.huhx0015.gw2at.fragments.LoginFragment;
 import com.huhx0015.gw2at.fragments.QuaggansFragment;
 import com.huhx0015.gw2at.fragments.ServerStatusFragment;
+import com.huhx0015.gw2at.utils.IMMLeaks;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
 import javax.inject.Inject;
 
@@ -73,6 +74,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.mToolbarTitle = savedInstanceState.getString(MAIN_ACTIVITY_TOOLBAR_TITLE);
             setToolbarText(mToolbarTitle);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Needed to resolve memory leak caused by InputMethodManager, reported by LeakCanary.
+        // More details here: https://gist.github.com/pyricau/4df64341cc978a7de414
+        IMMLeaks.fixFocusedViewLeak(getApplication());
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
