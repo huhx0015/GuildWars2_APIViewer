@@ -58,7 +58,11 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
 
     @Override
     public int getItemCount() {
-        return mWorldList.size();
+        if (mWorldList != null) {
+            return mWorldList.size();
+        } else {
+            return 0;
+        }
     }
 
     /** SUBCLASSES _____________________________________________________________________________ **/

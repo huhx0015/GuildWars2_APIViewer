@@ -56,23 +56,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initView();
 
         if (savedInstanceState == null) {
-
-            // Checks to see if a Guild Wars 2 API key has been set in strings.xml.
-            if (!getString(R.string.app_api_key).isEmpty()) {
-                GW2Account.getInstance().setApiKey(getString(R.string.app_api_key));
-            }
-            boolean isApiKeyAvailable = GW2Account.getInstance().getApiKey() != null;
-            if (isApiKeyAvailable) {
-                loadFragment(CharacterFragment.newInstance(), CharacterFragment.class.getSimpleName());
-                updateNavigationMenu();
-            } else {
-                loadFragment(LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
-                setToolbarText(getString(R.string.login));
-            }
+            initKey();
+            initFragment();
         } else {
             this.mFragmentTag = savedInstanceState.getString(MAIN_ACTIVITY_FRAGMENT_TAG);
-            this.mToolbarTitle = savedInstanceState.getString(MAIN_ACTIVITY_TOOLBAR_TITLE);
-            setToolbarText(mToolbarTitle);
+            setSubToolbarText(savedInstanceState.getString(MAIN_ACTIVITY_TOOLBAR_TITLE));
         }
     }
 
@@ -105,25 +93,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // LOGIN:
             case R.id.nav_login:
                 loadFragment(LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
-                setToolbarText(getString(R.string.login));
+                setSubToolbarText(getString(R.string.login));
                 break;
 
             // CHARACTER:
             case R.id.nav_character:
                 loadFragment(CharacterFragment.newInstance(), CharacterFragment.class.getSimpleName());
-                setToolbarText(getString(R.string.character));
+                setSubToolbarText(getString(R.string.character));
                 break;
 
             // SERVER STATUS:
             case R.id.nav_server_status:
                 loadFragment(ServerStatusFragment.newInstance(), ServerStatusFragment.class.getSimpleName());
-                setToolbarText(getString(R.string.server_status));
+                setSubToolbarText(getString(R.string.server_status));
                 break;
 
             // QUAGGANS:
             case R.id.nav_quaggans:
                 loadFragment(QuaggansFragment.newInstance(), QuaggansFragment.class.getSimpleName());
-                setToolbarText(getString(R.string.quaggans));
+                setSubToolbarText(getString(R.string.quaggans));
                 break;
 
             // QUIT:
@@ -143,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         outState.putString(MAIN_ACTIVITY_TOOLBAR_TITLE, mToolbarTitle);
     }
 
-    /** LAYOUT METHODS _________________________________________________________________________ **/
+    /** INITIALIZATION METHODS _________________________________________________________________ **/
 
     private void initView() {
         initBinding();
@@ -151,6 +139,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initDrawer();
         initText();
     }
+
+    private void initKey() {
+
+        // Checks to see if a Guild Wars 2 API key has been set in strings.xml.
+        if (!getString(R.string.app_api_key).isEmpty()) {
+            GW2Account.getInstance().setApiKey(getString(R.string.app_api_key));
+        }
+    }
+
+    private void initFragment() {
+        boolean isApiKeyAvailable = GW2Account.getInstance().getApiKey() != null;
+        if (isApiKeyAvailable) {
+            loadFragment(CharacterFragment.newInstance(), CharacterFragment.class.getSimpleName());
+            updateNavigationMenu();
+        } else {
+            loadFragment(LoginFragment.newInstance(), LoginFragment.class.getSimpleName());
+            setSubToolbarText(getString(R.string.login));
+        }
+    }
+
+    /** LAYOUT METHODS _________________________________________________________________________ **/
 
     private void initBinding() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -175,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(mBinding.mainToolbar);
     }
 
-    private void setToolbarText(String text) {
+    private void setSubToolbarText(String text) {
         this.mToolbarTitle = text;
         mViewModel.setSubToolbarText(text);
     }
@@ -184,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Menu navMenu = mBinding.mainNavView.getMenu();
         navMenu.findItem(R.id.nav_login).setVisible(false);
         navMenu.findItem(R.id.nav_character).setVisible(true);
-        setToolbarText(getString(R.string.character));
+        setSubToolbarText(getString(R.string.character));
     }
 
     /** FRAGMENT METHODS _______________________________________________________________________ **/
