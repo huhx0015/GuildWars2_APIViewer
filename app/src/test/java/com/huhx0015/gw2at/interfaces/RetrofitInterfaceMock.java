@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at;
+package com.huhx0015.gw2at.interfaces;
 
 import com.android.annotations.Nullable;
 import com.huhx0015.gw2at.data.MockResponseUtils;

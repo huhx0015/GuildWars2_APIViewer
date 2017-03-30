@@ -19,9 +19,13 @@ import com.squareup.leakcanary.RefWatcher;
 
 public class GW2Application extends Application {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    private AccountComponent mAccountComponent;
     private NetworkComponent mNetworkComponent;
     private RefWatcher mRefWatcher;
-    private AccountComponent mAccountComponent;
+
+    /** APPLICATION LIFECYCLE METHODS __________________________________________________________ **/
 
     @Override
     public void onCreate() {
@@ -46,6 +50,8 @@ public class GW2Application extends Application {
                 .build();
     }
 
+    /** GET METHODS ____________________________________________________________________________ **/
+
     public AccountComponent getUserComponent() {
         return mAccountComponent;
     }
@@ -57,5 +63,11 @@ public class GW2Application extends Application {
     public static RefWatcher getRefWatcher(Context context) {
         GW2Application application = (GW2Application) context.getApplicationContext();
         return application.mRefWatcher;
+    }
+
+    /** SET METHODS ____________________________________________________________________________ **/
+
+    public void setmNetworkComponent(NetworkComponent mNetworkComponent) {
+        this.mNetworkComponent = mNetworkComponent;
     }
 }

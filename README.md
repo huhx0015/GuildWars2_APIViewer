@@ -21,12 +21,12 @@ This application makes use of a Guild Wars 2 API key to access account-specific 
 ### Libraries
 
 * Dagger 2: https://github.com/google/dagger
+* Picasso: http://square.github.io/picasso/
+* RoundedImageView: https://github.com/vinc3m1/RoundedImageView
 * RxJava 2: https://github.com/ReactiveX/RxJava
 * RxAndroid: https://github.com/ReactiveX/RxAndroid
 * Retrofit 2: http://square.github.io/retrofit/
-* Picasso: http://square.github.io/picasso/
-* ButterKnife: http://jakewharton.github.io/butterknife/
-* RoundedImageView: https://github.com/vinc3m1/RoundedImageView
+* RESTMock: https://github.com/andrzejchm/RESTMock
 
 ## Copyright
 

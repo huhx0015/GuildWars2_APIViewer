@@ -1,5 +1,6 @@
 package com.huhx0015.gw2at.interfaces;
 
+import com.huhx0015.gw2at.activities.ApiActivity;
 import com.huhx0015.gw2at.fragments.ApiFragment;
 import com.huhx0015.gw2at.modules.ApplicationModule;
 import com.huhx0015.gw2at.modules.NetworkModule;
@@ -13,5 +14,6 @@ import dagger.Component;
 @Singleton
 @Component(modules={ApplicationModule.class, NetworkModule.class})
 public interface NetworkComponent {
+    void inject(ApiActivity activity);
     void inject(ApiFragment fragment);
 }

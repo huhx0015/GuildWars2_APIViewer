@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1001,
+    "name": "Anvil Rock",
+    "population": "Medium"
+  },
+  {
+    "id": 1002,
+    "name": "Borlis Pass",
+    "population": "Medium"
+  },
+  {
+    "id": 1003,
+    "name": "Yak's Bend",
+    "population": "VeryHigh"
+  }
+]
