@@ -48,6 +48,7 @@ public class QuaggansFragment extends ApiFragment {
     // RECYCLERVIEW VARIABLES
     private static final int QUAGGANS_GRID_PORTRAIT_COLUMNS = 2;
     private static final int QUAGGANS_GRID_LANDSCAPE_COLUMNS = 3;
+    private static final int QUAGGANS_PREFETCH_VALUE = 6;
 
     // PARCELABLE VARIABLES
     private static final String QUAGGANS_FRAGMENT_QUAGGANS_LIST = LOG_TAG + "_QUAGGANS_LIST";
@@ -68,7 +69,12 @@ public class QuaggansFragment extends ApiFragment {
 
         if (savedInstanceState != null) {
             mQuaggansList = savedInstanceState.getParcelableArrayList(QUAGGANS_FRAGMENT_QUAGGANS_LIST);
-            setRecyclerView();
+
+            if (mQuaggansList != null) {
+                setRecyclerView();
+            } else {
+                queryQuaggansList();
+            }
         } else {
             queryQuaggansList();
         }
@@ -81,7 +87,9 @@ public class QuaggansFragment extends ApiFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(QUAGGANS_FRAGMENT_QUAGGANS_LIST, new ArrayList<>(mQuaggansList));
+        if (mQuaggansList != null) {
+            outState.putParcelableArrayList(QUAGGANS_FRAGMENT_QUAGGANS_LIST, new ArrayList<>(mQuaggansList));
+        }
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -97,10 +105,11 @@ public class QuaggansFragment extends ApiFragment {
         } else {
             layoutManager = new GridLayoutManager(mContext, QUAGGANS_GRID_LANDSCAPE_COLUMNS);
         }
+        layoutManager.setItemPrefetchEnabled(true);
+        layoutManager.setInitialPrefetchItemCount(QUAGGANS_PREFETCH_VALUE);
 
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
         mBinding.apiRecyclerview.setHasFixedSize(true);
-        mBinding.apiRecyclerview.setItemViewCacheSize(30);
         mBinding.apiRecyclerview.setDrawingCacheEnabled(true);
         mBinding.apiRecyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }

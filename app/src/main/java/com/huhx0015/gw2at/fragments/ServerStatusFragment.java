@@ -46,6 +46,9 @@ public class ServerStatusFragment extends ApiFragment {
     // PARCELABLE VARIABLES
     private static final String SERVER_STATUS_FRAGMENT_WORLD_LIST = LOG_TAG + "_WORLD_LIST";
 
+    // RECYCLERVIEW VARIABLES
+    private static final int SERVER_STATUS_PREFETCH_VALUE = 6;
+
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
     public static ServerStatusFragment newInstance() {
@@ -62,7 +65,12 @@ public class ServerStatusFragment extends ApiFragment {
 
         if (savedInstanceState != null) {
             mWorldList = savedInstanceState.getParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST);
-            setRecyclerView();
+
+            if (mWorldList != null) {
+                setRecyclerView();
+            } else {
+                queryWorldStatus();
+            }
         } else {
             queryWorldStatus();
         }
@@ -75,7 +83,9 @@ public class ServerStatusFragment extends ApiFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST, new ArrayList<>(mWorldList));
+        if (mWorldList != null) {
+            outState.putParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST, new ArrayList<>(mWorldList));
+        }
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -86,9 +96,10 @@ public class ServerStatusFragment extends ApiFragment {
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+        layoutManager.setItemPrefetchEnabled(true);
+        layoutManager.setInitialPrefetchItemCount(SERVER_STATUS_PREFETCH_VALUE);
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
         mBinding.apiRecyclerview.setHasFixedSize(true);
-        mBinding.apiRecyclerview.setItemViewCacheSize(30);
         mBinding.apiRecyclerview.setDrawingCacheEnabled(true);
         mBinding.apiRecyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
     }

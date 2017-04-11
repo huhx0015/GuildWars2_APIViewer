@@ -77,7 +77,9 @@ public class ServerStatusView extends RelativeLayout {
     }
 
     public void setServerStatus(String serverStatus) {
-        mViewModel.setServerStatusText(serverStatus);
-        mViewModel.setServerStatusDrawable(DrawableReferenceUtils.getPopulationStatusDrawable(serverStatus), mContext);
+        if (serverStatus != null) {
+            mViewModel.setServerStatusText(serverStatus);
+            mViewModel.setServerStatusDrawable(DrawableReferenceUtils.getPopulationStatusDrawable(serverStatus), mContext);
+        }
     }
 }
