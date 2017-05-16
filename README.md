@@ -8,7 +8,7 @@ DEVELOPER: huhx0015
 
 ## Description
 
-Guild Wars 2 API Viewer: A basic Android application which is used for viewing various Guild Wars 2 API endpoint responses. Guild Wars 2 API Viewer utilizes Dagger 2, Databinding, Retrofit 2, and RxJava 2, in conjuction with MVVM architecture.
+Guild Wars 2 API Viewer: An Android application used for viewing various Guild Wars 2 API endpoint responses. Guild Wars 2 API Viewer was developed utilizing MVVM architecture, in conjunction with Databinding, Dagger 2, Retrofit 2, and RxJava 2.
 
 This application makes optional use of a Guild Wars 2 API key to access account-specific data. A Guild Wars 2 API key can be acquired at: https://account.arena.net/applications
 
