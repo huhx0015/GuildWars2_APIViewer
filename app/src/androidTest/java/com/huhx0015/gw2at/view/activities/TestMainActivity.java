@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.activities;
+package com.huhx0015.gw2at.view.activities;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.ui.views;
+package com.huhx0015.gw2at.view.views;
 
 import android.annotation.TargetApi;
 import android.content.Context;

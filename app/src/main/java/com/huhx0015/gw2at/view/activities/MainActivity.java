@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.activities;
+package com.huhx0015.gw2at.view.activities;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -13,12 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.data.GW2Account;
+import com.huhx0015.gw2at.models.objects.GW2Account;
 import com.huhx0015.gw2at.databinding.ActivityMainBinding;
-import com.huhx0015.gw2at.fragments.CharacterFragment;
-import com.huhx0015.gw2at.fragments.LoginFragment;
-import com.huhx0015.gw2at.fragments.QuaggansFragment;
-import com.huhx0015.gw2at.fragments.ServerStatusFragment;
+import com.huhx0015.gw2at.view.fragments.CharacterFragment;
+import com.huhx0015.gw2at.view.fragments.LoginFragment;
+import com.huhx0015.gw2at.view.fragments.QuaggansFragment;
+import com.huhx0015.gw2at.view.fragments.ServerStatusFragment;
 import com.huhx0015.gw2at.utils.IMMLeaks;
 import com.huhx0015.gw2at.viewmodels.activities.MainActivityViewModel;
 import javax.inject.Inject;

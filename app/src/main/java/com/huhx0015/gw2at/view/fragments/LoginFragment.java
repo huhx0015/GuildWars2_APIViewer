@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.fragments;
+package com.huhx0015.gw2at.view.fragments;
 
 import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.activities.MainActivity;
+import com.huhx0015.gw2at.view.activities.MainActivity;
 import com.huhx0015.gw2at.constants.GW2Constants;
-import com.huhx0015.gw2at.data.GW2Account;
+import com.huhx0015.gw2at.models.objects.GW2Account;
 import com.huhx0015.gw2at.databinding.FragmentLoginBinding;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
 import com.huhx0015.gw2at.models.responses.account.AccountResponse;

@@ -2,7 +2,6 @@ package com.huhx0015.gw2at.interfaces;
 
 import com.android.annotations.Nullable;
 import com.huhx0015.gw2at.data.MockResponseUtils;
-import com.huhx0015.gw2at.interfaces.RetrofitInterface;
 import com.huhx0015.gw2at.models.responses.BuildResponse;
 import com.huhx0015.gw2at.models.responses.EmblemResponse;
 import com.huhx0015.gw2at.models.responses.QuaggansResponse;

@@ -18,7 +18,7 @@
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true">
 
-        <com.huhx0015.gw2at.ui.views.ServerStatusView
+        <com.huhx0015.gw2at.view.views.ServerStatusView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

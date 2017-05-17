@@ -1,9 +1,9 @@
-package com.huhx0015.gw2at.interfaces;
+package com.huhx0015.gw2at.injections.components;
 
-import com.huhx0015.gw2at.activities.ApiActivity;
-import com.huhx0015.gw2at.fragments.ApiFragment;
-import com.huhx0015.gw2at.modules.ApplicationModule;
-import com.huhx0015.gw2at.modules.NetworkModule;
+import com.huhx0015.gw2at.view.activities.ApiActivity;
+import com.huhx0015.gw2at.view.fragments.ApiFragment;
+import com.huhx0015.gw2at.injections.modules.ApplicationModule;
+import com.huhx0015.gw2at.injections.modules.NetworkModule;
 import javax.inject.Singleton;
 import dagger.Component;
 

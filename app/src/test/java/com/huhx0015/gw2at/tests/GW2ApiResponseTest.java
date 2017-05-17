@@ -1,6 +1,6 @@
 package com.huhx0015.gw2at.tests;
 
-import com.huhx0015.gw2at.activities.ApiActivity;
+import com.huhx0015.gw2at.view.activities.ApiActivity;
 import com.huhx0015.gw2at.application.GW2TestApplication;
 import com.huhx0015.gw2at.constants.GW2TestResponses;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;

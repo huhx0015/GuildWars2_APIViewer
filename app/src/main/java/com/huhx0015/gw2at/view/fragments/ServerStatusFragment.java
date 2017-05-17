@@ -1,13 +1,12 @@
-package com.huhx0015.gw2at.fragments;
+package com.huhx0015.gw2at.view.fragments;
 
 import android.app.ProgressDialog;
-import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +14,9 @@ import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.databinding.FragmentApiRecyclerviewBinding;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
-import com.huhx0015.gw2at.models.responses.QuaggansResponse;
-import com.huhx0015.gw2at.ui.adapters.QuaggansAdapter;
+import com.huhx0015.gw2at.models.responses.WorldsResponse;
+import com.huhx0015.gw2at.view.adapters.ServerStatusAdapter;
 import com.huhx0015.gw2at.utils.DialogUtils;
-import com.huhx0015.gw2at.utils.DisplayUtils;
 import com.huhx0015.gw2at.utils.SnackbarUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Michael Yoon Huh on 2/1/2017.
  */
 
-public class QuaggansFragment extends ApiFragment {
+public class ServerStatusFragment extends ApiFragment {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -40,22 +38,18 @@ public class QuaggansFragment extends ApiFragment {
     private FragmentApiRecyclerviewBinding mBinding;
 
     // DATA VARIABLES
-    private List<QuaggansResponse> mQuaggansList;
+    private List<WorldsResponse> mWorldList;
 
     // LOGGING VARIABLES
-    private static final String LOG_TAG = QuaggansFragment.class.getSimpleName();
-
-    // RECYCLERVIEW VARIABLES
-    private static final int QUAGGANS_GRID_PORTRAIT_COLUMNS = 2;
-    private static final int QUAGGANS_GRID_LANDSCAPE_COLUMNS = 3;
+    private static final String LOG_TAG = ServerStatusFragment.class.getSimpleName();
 
     // PARCELABLE VARIABLES
-    private static final String QUAGGANS_FRAGMENT_QUAGGANS_LIST = LOG_TAG + "_QUAGGANS_LIST";
+    private static final String SERVER_STATUS_FRAGMENT_WORLD_LIST = LOG_TAG + "_WORLD_LIST";
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
-    public static QuaggansFragment newInstance() {
-        return new QuaggansFragment();
+    public static ServerStatusFragment newInstance() {
+        return new ServerStatusFragment();
     }
 
     /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
@@ -67,10 +61,10 @@ public class QuaggansFragment extends ApiFragment {
         initLayout();
 
         if (savedInstanceState != null) {
-            mQuaggansList = savedInstanceState.getParcelableArrayList(QUAGGANS_FRAGMENT_QUAGGANS_LIST);
+            mWorldList = savedInstanceState.getParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST);
             setRecyclerView();
         } else {
-            queryQuaggansList();
+            queryWorldStatus();
         }
 
         return mBinding.getRoot();
@@ -81,7 +75,7 @@ public class QuaggansFragment extends ApiFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(QUAGGANS_FRAGMENT_QUAGGANS_LIST, new ArrayList<>(mQuaggansList));
+        outState.putParcelableArrayList(SERVER_STATUS_FRAGMENT_WORLD_LIST, new ArrayList<>(mWorldList));
     }
 
     /** LAYOUT METHODS _________________________________________________________________________ **/
@@ -91,13 +85,7 @@ public class QuaggansFragment extends ApiFragment {
     }
 
     private void initRecyclerView() {
-        GridLayoutManager layoutManager;
-        if (DisplayUtils.getOrientation(mContext) == Configuration.ORIENTATION_PORTRAIT) {
-            layoutManager = new GridLayoutManager(mContext, QUAGGANS_GRID_PORTRAIT_COLUMNS);
-        } else {
-            layoutManager = new GridLayoutManager(mContext, QUAGGANS_GRID_LANDSCAPE_COLUMNS);
-        }
-
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         mBinding.apiRecyclerview.setLayoutManager(layoutManager);
         mBinding.apiRecyclerview.setHasFixedSize(true);
         mBinding.apiRecyclerview.setItemViewCacheSize(30);
@@ -106,27 +94,27 @@ public class QuaggansFragment extends ApiFragment {
     }
 
     private void setRecyclerView() {
-        QuaggansAdapter adapter = new QuaggansAdapter(mQuaggansList, mContext);
+        ServerStatusAdapter adapter = new ServerStatusAdapter(mWorldList, mContext);
         adapter.setHasStableIds(true);
         mBinding.apiRecyclerview.setAdapter(adapter);
     }
 
     /** NETWORK METHODS ________________________________________________________________________ **/
 
-    private void queryQuaggansList() {
+    private void queryWorldStatus() {
         final ProgressDialog progressDialog = DialogUtils.createProgressDialog(mContext);
 
-        RetrofitInterface quaggansRequest = mNetworkAdapter.create(RetrofitInterface.class);
-        Observable<List<QuaggansResponse>> call = quaggansRequest.getQuaggans("all");
+        RetrofitInterface worldRequest = mNetworkAdapter.create(RetrofitInterface.class);
+        Observable<List<WorldsResponse>> call = worldRequest.getWorlds("all");
         call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<QuaggansResponse>>() {
+                .subscribe(new Observer<List<WorldsResponse>>() {
                     @Override
                     public void onSubscribe(Disposable d) {}
 
                     @Override
-                    public void onNext(List<QuaggansResponse> response) {
-                        mQuaggansList = response;
+                    public void onNext(List<WorldsResponse> response) {
+                        mWorldList = response;
                         if (response != null) {
                             setRecyclerView();
                         }
@@ -140,10 +128,10 @@ public class QuaggansFragment extends ApiFragment {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        queryQuaggansList();
+                                        queryWorldStatus();
                                     }
                                 });
-                        Log.e(LOG_TAG, "queryQuaggansList(): ERROR: " + t.getLocalizedMessage());
+                        Log.e(LOG_TAG, "queryWorldStatus(): ERROR: " + t.getLocalizedMessage());
                     }
 
                     @Override

@@ -1,7 +1,6 @@
-package com.huhx0015.gw2at.data;
+package com.huhx0015.gw2at.models.objects;
 
 import com.huhx0015.gw2at.models.responses.account.AccountResponse;
-
 import java.util.List;
 
 /**

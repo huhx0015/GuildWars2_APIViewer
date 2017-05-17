@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.modules;
+package com.huhx0015.gw2at.injections.modules;
 
 import android.app.Application;
 import com.google.gson.FieldNamingPolicy;

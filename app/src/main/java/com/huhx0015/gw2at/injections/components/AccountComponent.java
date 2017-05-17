@@ -1,8 +1,8 @@
-package com.huhx0015.gw2at.interfaces;
+package com.huhx0015.gw2at.injections.components;
 
-import com.huhx0015.gw2at.activities.MainActivity;
-import com.huhx0015.gw2at.modules.ApplicationModule;
-import com.huhx0015.gw2at.modules.UserModule;
+import com.huhx0015.gw2at.view.activities.MainActivity;
+import com.huhx0015.gw2at.injections.modules.ApplicationModule;
+import com.huhx0015.gw2at.injections.modules.UserModule;
 import javax.inject.Singleton;
 import dagger.Component;
 

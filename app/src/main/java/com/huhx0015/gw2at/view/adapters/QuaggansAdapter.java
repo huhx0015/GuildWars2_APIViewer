@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.ui.adapters;
+package com.huhx0015.gw2at.view.adapters;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

@@ -4,7 +4,7 @@ import android.os.Build;
 import android.widget.TextView;
 import com.huhx0015.gw2at.BuildConfig;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.activities.MainActivity;
+import com.huhx0015.gw2at.view.activities.MainActivity;
 import com.huhx0015.gw2at.constants.GW2TestResponses;
 import org.junit.Before;
 import org.junit.Test;

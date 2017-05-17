@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.fragments;
+package com.huhx0015.gw2at.view.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.activities;
+package com.huhx0015.gw2at.view.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
