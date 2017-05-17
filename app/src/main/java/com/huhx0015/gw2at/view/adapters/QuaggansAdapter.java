@@ -51,6 +51,14 @@ public class QuaggansAdapter extends RecyclerView.Adapter<QuaggansAdapter.Quagga
     }
 
     @Override
+    public void onViewRecycled(QuaggansViewHolder holder) {
+        holder.mBinding.getViewModel().removeOnPropertyChangedCallback(null);
+        holder.mBinding.setViewModel(null);
+        holder.mBinding.executePendingBindings();
+        super.onViewRecycled(holder);
+    }
+
+    @Override
     public long getItemId(int position) {
         return position;
     }

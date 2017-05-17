@@ -52,6 +52,14 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
     }
 
     @Override
+    public void onViewRecycled(ServerStatusViewHolder holder) {
+        holder.mBinding.getViewModel().removeOnPropertyChangedCallback(null);
+        holder.mBinding.setViewModel(null);
+        holder.mBinding.executePendingBindings();
+        super.onViewRecycled(holder);
+    }
+
+    @Override
     public long getItemId(int position) {
         return position;
     }

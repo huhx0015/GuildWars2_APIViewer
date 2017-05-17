@@ -67,8 +67,10 @@ public class CharacterFragment extends ApiFragment {
         if (savedInstanceState != null) {
             mCharacterList = savedInstanceState.getStringArrayList(CHARACTER_FRAGMENT_CHARACTER_LIST);
 
-            if (!mCharacterList.isEmpty()) {
+            if (mCharacterList != null && !mCharacterList.isEmpty()) {
                 queryCharacterOverview(GW2Account.getInstance().getApiKey(), mCharacterList.get(0));
+            } else {
+                queryCharacterList(GW2Account.getInstance().getApiKey());
             }
         } else {
             queryCharacterList(GW2Account.getInstance().getApiKey());
