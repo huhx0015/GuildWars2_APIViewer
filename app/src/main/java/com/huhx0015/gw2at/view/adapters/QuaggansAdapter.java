@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.databinding.AdapterQuaggansBinding;
-import com.huhx0015.gw2at.models.responses.QuaggansResponse;
+import com.huhx0015.gw2at.model.responses.QuaggansResponse;
 import com.huhx0015.gw2at.viewmodels.adapters.QuaggansAdapterViewModel;
 import java.util.List;
 

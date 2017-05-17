@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.databinding.AdapterServerStatusBinding;
-import com.huhx0015.gw2at.models.responses.WorldsResponse;
+import com.huhx0015.gw2at.model.responses.WorldsResponse;
 import com.huhx0015.gw2at.viewmodels.adapters.ServerStatusAdapterViewModel;
 import java.util.List;
 

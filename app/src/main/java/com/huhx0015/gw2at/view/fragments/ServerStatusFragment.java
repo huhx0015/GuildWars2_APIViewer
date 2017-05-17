@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.huhx0015.gw2at.R;
 import com.huhx0015.gw2at.databinding.FragmentApiRecyclerviewBinding;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
-import com.huhx0015.gw2at.models.responses.WorldsResponse;
+import com.huhx0015.gw2at.model.responses.WorldsResponse;
 import com.huhx0015.gw2at.view.adapters.ServerStatusAdapter;
 import com.huhx0015.gw2at.utils.DialogUtils;
 import com.huhx0015.gw2at.utils.SnackbarUtils;

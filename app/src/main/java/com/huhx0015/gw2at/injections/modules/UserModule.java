@@ -1,6 +1,6 @@
 package com.huhx0015.gw2at.injections.modules;
 
-import com.huhx0015.gw2at.models.objects.GW2Account;
+import com.huhx0015.gw2at.model.objects.GW2Account;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;

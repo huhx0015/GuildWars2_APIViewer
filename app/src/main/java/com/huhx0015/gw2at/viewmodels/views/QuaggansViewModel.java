@@ -7,7 +7,7 @@ import android.databinding.ObservableField;
 import android.graphics.drawable.Drawable;
 import com.huhx0015.gw2at.BR;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.utils.BindableFieldTarget;
+import com.huhx0015.gw2at.view.targets.BindableFieldTarget;
 import com.huhx0015.gw2at.utils.DisplayUtils;
 import com.squareup.picasso.Picasso;
 

@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.huhx0015.gw2at.R;
-import com.huhx0015.gw2at.models.objects.GW2Account;
+import com.huhx0015.gw2at.model.objects.GW2Account;
 import com.huhx0015.gw2at.databinding.ActivityMainBinding;
 import com.huhx0015.gw2at.view.fragments.CharacterFragment;
 import com.huhx0015.gw2at.view.fragments.LoginFragment;
