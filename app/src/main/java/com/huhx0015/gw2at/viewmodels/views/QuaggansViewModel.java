@@ -27,7 +27,7 @@ public class QuaggansViewModel extends BaseObservable implements BindableFieldTa
 
     // VIEWMODEL VARIABLES
     @Bindable
-    public boolean quaggansProgressBarVisiblility;
+    public boolean quaggansProgressBarVisibilility;
     @Bindable
     public String quaggansNameText;
     public ObservableField<Drawable> quaggansImage;
@@ -35,8 +35,8 @@ public class QuaggansViewModel extends BaseObservable implements BindableFieldTa
     /** SET METHODS ____________________________________________________________________________ **/
 
     public void setQuaggansProgressBarVisible(boolean isVisible) {
-        this.quaggansProgressBarVisiblility = isVisible;
-        notifyPropertyChanged(BR.quaggansProgressBarVisiblility);
+        this.quaggansProgressBarVisibilility = isVisible;
+        notifyPropertyChanged(BR.quaggansProgressBarVisibilility);
     }
 
     public void setQuaggansNameText(String name) {
