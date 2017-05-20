@@ -1,6 +1,6 @@
 package com.huhx0015.gw2at.data;
 
-import com.huhx0015.gw2at.models.responses.QuaggansResponse;
+import com.huhx0015.gw2at.model.responses.QuaggansResponse;
 import java.util.ArrayList;
 import java.util.List;
 

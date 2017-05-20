@@ -1,10 +1,10 @@
 package com.huhx0015.gw2at.tests;
 
-import com.huhx0015.gw2at.activities.ApiActivity;
+import com.huhx0015.gw2at.view.activities.ApiActivity;
 import com.huhx0015.gw2at.application.GW2TestApplication;
 import com.huhx0015.gw2at.constants.GW2TestResponses;
 import com.huhx0015.gw2at.interfaces.RetrofitInterface;
-import com.huhx0015.gw2at.models.responses.QuaggansResponse;
+import com.huhx0015.gw2at.model.responses.QuaggansResponse;
 import com.huhx0015.gw2at.runners.GW2RoboElectricRunner;
 import com.huhx0015.gw2at.BuildConfig;
 import org.junit.Before;

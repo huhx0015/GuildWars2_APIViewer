@@ -1,8 +1,8 @@
 package com.huhx0015.gw2at.application;
 
 import com.huhx0015.gw2at.interfaces.DaggerNetworkComponent;
-import com.huhx0015.gw2at.modules.ApplicationModule;
-import com.huhx0015.gw2at.modules.NetworkModule;
+import com.huhx0015.gw2at.injections.modules.ApplicationModule;
+import com.huhx0015.gw2at.injections.modules.NetworkModule;
 import io.appflate.restmock.RESTMockServer;
 
 /**

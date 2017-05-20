@@ -19,7 +19,7 @@ package com.huhx0015.gw2at.runners;
 
 import android.app.Application;
 import com.huhx0015.gw2at.application.GW2TestApplication;
-import com.huhx0015.gw2at.interfaces.NetworkComponent;
+import com.huhx0015.gw2at.injections.components.NetworkComponent;
 import org.robolectric.DefaultTestLifecycle;
 import org.robolectric.annotation.Config;
 import org.robolectric.manifest.AndroidManifest;
@@ -29,8 +29,8 @@ import io.appflate.restmock.RESTMockServerStarter;
 import io.appflate.restmock.android.AndroidLocalFileParser;
 import io.appflate.restmock.android.AndroidLogger;
 import com.huhx0015.gw2at.interfaces.DaggerNetworkComponent;
-import com.huhx0015.gw2at.modules.ApplicationModule;
-import com.huhx0015.gw2at.modules.NetworkModule;
+import com.huhx0015.gw2at.injections.modules.ApplicationModule;
+import com.huhx0015.gw2at.injections.modules.NetworkModule;
 
 /**
  * A {@link org.robolectric.TestLifecycle} implementation that sets up the dagger modules necessary
