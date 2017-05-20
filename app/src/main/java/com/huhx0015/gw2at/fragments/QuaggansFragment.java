@@ -115,7 +115,7 @@ public class QuaggansFragment extends ApiFragment {
     }
 
     private void setRecyclerView() {
-        QuaggansAdapter adapter = new QuaggansAdapter(mQuaggansList, mContext);
+        QuaggansAdapter adapter = new QuaggansAdapter(mQuaggansList);
         adapter.setHasStableIds(true);
         mBinding.apiRecyclerview.setAdapter(adapter);
     }

@@ -105,7 +105,7 @@ public class ServerStatusFragment extends ApiFragment {
     }
 
     private void setRecyclerView() {
-        ServerStatusAdapter adapter = new ServerStatusAdapter(mWorldList, mContext);
+        ServerStatusAdapter adapter = new ServerStatusAdapter(mWorldList);
         adapter.setHasStableIds(true);
         mBinding.apiRecyclerview.setAdapter(adapter);
     }

@@ -1,6 +1,5 @@
 package com.huhx0015.gw2at.ui.adapters;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,9 +18,6 @@ public class QuaggansAdapter extends RecyclerView.Adapter<QuaggansAdapter.Quagga
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // ADAPTER VARIABLES
-    private Context mContext;
-
     // LIST VARIABLES
     private List<QuaggansResponse> mQuaggansList;
 
@@ -30,16 +26,15 @@ public class QuaggansAdapter extends RecyclerView.Adapter<QuaggansAdapter.Quagga
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
-    public QuaggansAdapter(List<QuaggansResponse> list, Context mContext) {
+    public QuaggansAdapter(List<QuaggansResponse> list) {
         this.mQuaggansList = list;
-        this.mContext = mContext;
     }
 
     /** RECYCLER VIEW METHODS __________________________________________________________________ **/
 
     @Override
     public QuaggansAdapter.QuaggansViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        AdapterQuaggansBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.adapter_quaggans, parent, false);
+        AdapterQuaggansBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.adapter_quaggans, parent, false);
         return new QuaggansAdapter.QuaggansViewHolder(binding);
     }
 

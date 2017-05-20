@@ -1,6 +1,5 @@
 package com.huhx0015.gw2at.ui.adapters;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,9 +18,6 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // ADAPTER VARIABLES
-    private Context mContext;
-
     // LIST VARIABLES
     private List<WorldsResponse> mWorldList;
 
@@ -30,16 +26,15 @@ public class ServerStatusAdapter extends RecyclerView.Adapter<ServerStatusAdapte
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
-    public ServerStatusAdapter(List<WorldsResponse> list, Context mContext) {
+    public ServerStatusAdapter(List<WorldsResponse> list) {
         this.mWorldList = list;
-        this.mContext = mContext;
     }
 
     /** RECYCLER VIEW METHODS __________________________________________________________________ **/
 
     @Override
     public ServerStatusViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        AdapterServerStatusBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.adapter_server_status, parent, false);
+        AdapterServerStatusBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.adapter_server_status, parent, false);
         return new ServerStatusViewHolder(binding);
     }
 
