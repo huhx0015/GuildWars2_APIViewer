@@ -59,6 +59,12 @@ public class LoginFragment extends ApiFragment implements LoginFragmentViewModel
         return mBinding.getRoot();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mBinding.unbind();
+    }
+
     /** FRAGMENT EXTENSION METHODS _____________________________________________________________ **/
 
     @Override

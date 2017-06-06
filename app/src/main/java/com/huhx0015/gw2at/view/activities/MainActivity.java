@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Needed to resolve memory leak caused by InputMethodManager, reported by LeakCanary.
         // More details here: https://gist.github.com/pyricau/4df64341cc978a7de414
         IMMLeaks.fixFocusedViewLeak(getApplication());
+
+        mBinding.unbind();
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/

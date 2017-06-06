@@ -78,6 +78,13 @@ public class ServerStatusFragment extends ApiFragment {
         return mBinding.getRoot();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mBinding.apiRecyclerview.setAdapter(null);
+        mBinding.unbind();
+    }
+
     /** FRAGMENT EXTENSION METHODS _____________________________________________________________ **/
 
     @Override
