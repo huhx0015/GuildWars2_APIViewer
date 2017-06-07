@@ -1,4 +1,4 @@
-package com.huhx0015.gw2at.tests;
+package com.huhx0015.gw2at.tests.view.activities;
 
 import android.os.Build;
 import android.widget.TextView;
@@ -19,6 +19,9 @@ import static junit.framework.Assert.assertTrue;
  * Created by Michael Yoon Huh on 3/29/2017.
  *
  * Reference: http://guides.codepath.com/android/Unit-Testing-with-Robolectric
+ *
+ * NOTE: Configure your working directory to the project's default module path if
+ * AndroidManifest.xml file cannot be found.
  */
 
 @Config(constants = BuildConfig.class, sdk = Build.VERSION_CODES.LOLLIPOP)

@@ -10,12 +10,18 @@ import java.util.List;
 
 public class MockResponseUtils {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // TEST VARIABLES
+    private static final String TEST_ID = "box";
+    private static final String TEST_URL = "https://static.staticwars.com/quaggans/box.jpg";
+
     /** MOCK RESPONSE METHODS __________________________________________________________________ **/
 
     // QUAGGANS:
     public static List<QuaggansResponse> getMockQuaggansResponse() {
         List<QuaggansResponse> mockResponse = new ArrayList<>();
-        mockResponse.add(new QuaggansResponse("box", "https://static.staticwars.com/quaggans/box.jpg"));
+        mockResponse.add(new QuaggansResponse(TEST_ID, TEST_URL));
         return mockResponse;
     }
 }
