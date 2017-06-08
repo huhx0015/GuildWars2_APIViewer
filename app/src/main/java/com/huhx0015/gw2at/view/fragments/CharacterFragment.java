@@ -80,8 +80,8 @@ public class CharacterFragment extends ApiFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         mBinding.unbind();
     }
 

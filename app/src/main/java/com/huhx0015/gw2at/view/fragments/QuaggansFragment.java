@@ -83,8 +83,8 @@ public class QuaggansFragment extends ApiFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         mBinding.apiRecyclerview.setAdapter(null);
         mBinding.unbind();
     }

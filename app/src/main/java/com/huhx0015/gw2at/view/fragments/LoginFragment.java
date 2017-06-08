@@ -60,8 +60,8 @@ public class LoginFragment extends ApiFragment implements LoginFragmentViewModel
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         mBinding.unbind();
     }
 

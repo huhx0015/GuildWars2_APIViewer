@@ -79,8 +79,8 @@ public class ServerStatusFragment extends ApiFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         mBinding.apiRecyclerview.setAdapter(null);
         mBinding.unbind();
     }
